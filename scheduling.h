@@ -1,15 +1,16 @@
 #define QUANTUM 1       // Quantum
 #define NUM_PROCESSES 4 // # procesos
 
-//estructura de un proceso
+// estructura de un proceso
 typedef struct process
 {
     int id;
     int burst_time;
+    int priority;
     struct process *next;
 } process_t;
 
-//lista enlazada
+// lista enlazada
 typedef struct
 {
     process_t *head;
@@ -17,11 +18,12 @@ typedef struct
 } linked_list_t;
 
 // Función para crear un nuevo proceso
-process_t *create_process(int id, int burst_time)
+process_t *create_process(int id, int burst_time, int priority)
 {
-    process_t *new_process = (process_t *)malloc(sizeof(process_t)); //para reservar memoria dinámica en el heap para un nuevo proceso del tipo process_t
+    process_t *new_process = (process_t *)malloc(sizeof(process_t)); // para reservar memoria dinámica en el heap para un nuevo proceso del tipo process_t
     new_process->id = id;
     new_process->burst_time = burst_time;
+    new_process->priority = priority;
     new_process->next = NULL;
     return new_process;
 }

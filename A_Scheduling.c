@@ -21,11 +21,12 @@ void *execute_process(void *arg)
     }
     return NULL;
 }
+//                                                                             ______________________________
+//____________________________________________________________________________/Planificador Round Robin (RR)
 
-// Planificador Round Robin (RR)
-void round_robin_scheduler(linked_list_t *process_list)
+void rr_scheduler(linked_list_t *process_list)
 {
-    //Puntero que apunta al inicio de la lista enlazada
+    // Puntero que apunta al inicio de la lista enlazada
     process_t *current_process = process_list->head;
     pthread_t threads[NUM_PROCESSES];
 
@@ -46,6 +47,63 @@ void round_robin_scheduler(linked_list_t *process_list)
     }
 }
 
+//                                                                             ______________________________
+//____________________________________________________________________________/Planificador Prioridad (qsort)
+
+// Comparison function for qsort
+int compareQsort(const void *a, const void *b)
+{
+    return ((const process_t *)a)->priority - ((const process_t *)b)->priority;
+}
+
+void priority_scheduler(linked_list_t *process_list)
+{
+
+    int count = 0;
+
+    process_t *current = process_list->head;
+
+    // contar procesos
+
+    while (current != NULL)
+    {
+        count++;
+        current = current->next;
+    }
+
+    // Convertir la lista array
+    process_t *process_array = malloc(count * sizeof(process_t));
+    current = process_list->head;
+    for (int i = 0; i < count; i++)
+    {
+        process_array[i] = *current;
+        current = current->next;
+    }
+
+    //  qsort
+    qsort(process_list, count, sizeof(process_t),
+          compareQsort);
+
+    // Volver a convertir el array ordenado en una lista enlazada
+    current = process_list->head;
+    for (int i = 0; i < count; i++)
+    {
+        *current = process_array[i];
+        current = current->next;
+    }
+
+    // Mostrar la lista enlazada ordenada
+    printf("\nLista ordenada (por prioridad):\n");
+    current = process_list->head;
+    while (current != NULL)
+    {
+        printf("ID: %d, Prioridad: %d\n", current->id, current->priority);
+        current = current->next;
+    }
+
+    free(process_array);
+}
+
 int main()
 {
     // Crear la lista de procesos
@@ -54,13 +112,14 @@ int main()
     process_list.tail = NULL;
 
     // Crear los procesos con tiempos de burst diferentes
-    add_process(&process_list, create_process(1, 3)); // Proceso 1, tiempo de burst 3
-    add_process(&process_list, create_process(2, 4)); 
-    add_process(&process_list, create_process(3, 20)); 
-    add_process(&process_list, create_process(4, 5)); 
+    add_process(&process_list, create_process(1, 3, 1)); // Proceso 1, tiempo de burst 3, prioridad 1
+    add_process(&process_list, create_process(2, 4, 5));
+    add_process(&process_list, create_process(3, 2, 3));
+    add_process(&process_list, create_process(4, 5, 25));
 
     // Ejecutar el planificador Round Robin
-    round_robin_scheduler(&process_list);
+    // rr_scheduler(&process_list);
+    priority_scheduler(&process_list);
 
     return 0;
 }

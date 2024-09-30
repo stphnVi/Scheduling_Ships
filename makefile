@@ -3,8 +3,6 @@ CFLAGS = -Wall -pthread
 
 # Archivos fuente
 SRCS = A_Scheduling.c   # Archivos fuente .c
-
-# Archivos que se generarán a partir de los archivos fuente
 OBJS = $(SRCS:.c=.o)
 
 # Nombre del archivo ejecutable
@@ -22,5 +20,5 @@ $(EXEC): $(OBJS)
 clean:
 	rm -f $(OBJS) $(EXEC)
 
-# Dependencias: A_Scheduling.o depende de scheduling.h
+# Dependencias
 A_Scheduling.o: scheduling.h
