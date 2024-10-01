@@ -1,27 +1,34 @@
 #include <stdio.h>
 #include "CEThreads.c"
 
-void *function() {
-    printf("Hola Mundo\n"); // Imprimir la cadena recibida
-    return 0;
+// Ejemplo de funcion que se ejecutará en el hilo
+void *function(void *arg) {
+    for (int i = 0; i < 5; i++) {
+        printf("Hola desde el hilo! Argumento: %s (Iteración %d)\n", (char *)arg, i);
+    }
+    return NULL;
 }
 
+// Ejemplo de uso
 int main() {
-    CEThread my_thread;
-    int thread_id = 1; // ID del hilo
-    const char *str = "hola mundo"; // Usar puntero a char
+    CEThread thread1;
+    CEThread thread2;
 
-    // Crear un hilo con ID 1, especificar la función y el argumento
-    if (CEThread_create(&my_thread, thread_id, function, NULL) != 0) {
-        fprintf(stderr, "No se pudo crear el hilo\n");
-        return EXIT_FAILURE;
-    }
+    // Crear dos hilos
+    CEThread_create(&thread1, 1, function, "Hilo 1");
+    CEThread_create(&thread2, 2, function, "Hilo 2");
 
-    while (!my_thread.finished) {
-        // Esperar a que el hilo termine 
-    }
+    // Iniciar la ejecucion de hilos
+    CEThread_run(&thread1);
+    CEThread_run(&thread2);
 
-    printf("Hilo ID %d ha terminado.\n", my_thread.id);
+    // Esperar a que thread1 termine
+    CEThread_join(&thread1);
+    printf("Thread 1 ha terminado.\n");
 
-    return EXIT_SUCCESS;
+    // Esperar a que thread2 termine
+    CEThread_join(&thread2);
+    printf("Thread 2 ha terminado.\n");
+
+    return 0;
 }
