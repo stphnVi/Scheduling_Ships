@@ -80,4 +80,39 @@ void CEThread_join(CEThread *thread) {
     }
 }
 
+/* =======================================
+ *                CEmutex
+ * ======================================= */
 
+typedef struct {
+    int locked;  // 0 = desbloqueado, 1 = bloqueado
+} CEmutex;
+
+
+// INIT: inicializa el mutex
+void CEmutex_init(CEmutex *mutex) {
+    if (mutex != NULL) {
+        mutex->locked = 0; // Inicializar como desbloqueado
+    }
+
+    printf("Mutex inicializado\n");
+}
+
+// LOCK: Bloquear el mutex
+void CEmutex_lock(CEmutex *mutex) {
+    // __sync_lock_test_and_set establece *ptr a un valor (1), retorna el valor anterior
+    while (__sync_lock_test_and_set(&(mutex->locked), 1)) {
+        // Espera activa (busy waiting)
+    }
+
+    printf("Seccion critica bloqueada.\n");
+}
+
+// UNLOCK: Desbloquear el mutex
+void CEmutex_unlock(CEmutex *mutex) {
+    if (mutex->locked) {
+        __sync_lock_release(&(mutex->locked)); // Liberar el mutex
+    }
+
+    printf("Seccion critica desbloqueada.\n");
+}

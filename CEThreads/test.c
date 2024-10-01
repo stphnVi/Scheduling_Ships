@@ -30,5 +30,11 @@ int main() {
     CEThread_join(&thread2);
     printf("Thread 2 ha terminado.\n");
 
+    CEmutex mutex;
+    CEmutex_init(&mutex);
+    CEmutex_lock(&mutex);
+    CEmutex_unlock(&mutex);
+
+
     return 0;
 }
