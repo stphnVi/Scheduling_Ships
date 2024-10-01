@@ -75,6 +75,13 @@ void CEThread_end(CEThread *thread) {
 // JOIN: esperar a que un hilo termine su ejecucion, para que el hilo 
 // principal u otros hilos se sincronicen con el final de ese hilo
 void CEThread_join(CEThread *thread, void *value) {
-    
+    if (thread == NULL) {
+        return;
+    }
+
+    while (!thread->finished) { // Ejecuta otros hilos hasta que termine el hilo especificado
+            CEThread_run_next(thread);
+    }
 }
+
 
