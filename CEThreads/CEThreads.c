@@ -42,8 +42,7 @@ void CEThread_run_next() {
 void CEThread_run(CEThread *thread) {
     if(setjmp(thread->context) == 0) {
         thread->function(thread->arg); // ejecutar el hilo pasando el argumento
-        thread->finished; // marcar como terminado
-        CEThread_run_next(); // ejecutar siguiente hilo
+        thread->finished = 1; // marcar como terminado
     }
 }
 
@@ -57,9 +56,6 @@ int CEThread_create(CEThread *thread, int id, void *(*function)(void *), void *a
     thread->function = function; // set function
     thread->arg = arg;           // set argument
     thread->finished = 0;        // set status: hilo no finalizado
-
-    //Ejecutar el hilo
-    CEThread_run(thread);
 
     return 0;  
 

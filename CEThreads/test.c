@@ -4,7 +4,7 @@
 // Ejemplo de funcion que se ejecutará en el hilo
 void *function(void *arg) {
     for (int i = 0; i < 5; i++) {
-        printf("Hola desde el hilo! Argumento: %s (Iteración %d)\n", (char *)arg, i);
+        printf("Hola desde el hilo! Argumento: %s (Iteracion %d)\n", (char *)arg, i);
     }
     return NULL;
 }
