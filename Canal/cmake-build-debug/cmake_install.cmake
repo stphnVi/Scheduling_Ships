@@ -1,4 +1,4 @@
-# Install script for directory: /home/josue/CLionProjects/Canal
+# Install script for directory: /home/josue/Desktop/Scheduling_Ships/Canal
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/josue/CLionProjects/Canal/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
