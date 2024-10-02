@@ -1,4 +1,9 @@
 # ninja log v6
 1	145	1727764491020403695	CMakeFiles/Canal.dir/main.c.o	3d2be084149f2d60
-3	101	1727765925222602193	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
-3	60	1727764522358639815	CMakeFiles/Canal.dir/Passage.c.o	672d1f7368e37e71
+2	46	1727848184362359762	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
+4	136	1727848184364359807	CMakeFiles/Canal.dir/Passage.c.o	672d1f7368e37e71
+191	268	1727848184551363922	Canal	65485f5b4143181c
+46	77	1727848184406360731	CMakeFiles/Canal.dir/Structs/Canal.c.o	9bc15084f6e95cdc
+2	131	1727848184362359762	CMakeFiles/Canal.dir/Structs/Boat_list.c.o	cb31858ada7885a
+77	169	1727848184437361413	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
+133	191	1727848184493362646	CMakeFiles/Canal.dir/Structs/Boat.c.o	2b276a66e9a18cf5
