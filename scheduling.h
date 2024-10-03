@@ -7,6 +7,7 @@ typedef struct process
     int id;
     int burst_time;
     int priority;
+    int time;
     struct process *next;
 } process_t;
 
@@ -24,6 +25,7 @@ process_t *create_process(int id, int burst_time, int priority)
     new_process->id = id;
     new_process->burst_time = burst_time;
     new_process->priority = priority;
+    new_process->time = burst_time;
     new_process->next = NULL;
     return new_process;
 }

@@ -145,6 +145,63 @@ void FCFS_scheduler(linked_list_t *process_list)
     }
 }
 
+//                                                                             _____________________________________
+//____________________________________________________________________________/       Real Time Scheduler
+
+void real_time_scheduler(linked_list_t *process_list)
+{
+    process_t *current = process_list->head;
+
+    while (current != NULL)
+    {
+        if (current->time > 0)
+        {
+            printf("Ejecutando  %d\n", current->id);
+
+            if (current->time > QUANTUM)
+            {
+                // Simular la ejecución del proceso durante el quantum
+                sleep(QUANTUM); // Simula el tiempo de ejecución
+                current->time -= QUANTUM;
+                printf("Interrupción  ID: %d con %d segundos restantes\n", current->id, current->time);
+            }
+            else
+            {
+
+                sleep(current->time);
+                printf("Proceso ID %d completado\n", current->id);
+                current->time = 0;
+            }
+        }
+
+        current = current->next;
+
+        if (current == NULL)
+        {
+            // volvemos al inicio si aún hay procesos
+            current = process_list->head;
+        }
+
+        // Verificar
+        int all_done = 1;
+        process_t *check = process_list->head;
+        while (check != NULL)
+        {
+            if (check->time > 0)
+            {
+                all_done = 0;
+                break;
+            }
+            check = check->next;
+        }
+
+        if (all_done)
+        {
+            printf("\nTodos los procesos han sido completados.\n");
+            break;
+        }
+    }
+}
 int main()
 {
     // Crear la lista de procesos
@@ -160,7 +217,8 @@ int main()
 
     // rr_scheduler(&process_list);
     // priSJF_scheduler(&process_list, 1); // 1= priority, else = sjf
-    FCFS_scheduler(&process_list);
+    // FCFS_scheduler(&process_list);
+    real_time_scheduler(&process_list);
 
     return 0;
 }
