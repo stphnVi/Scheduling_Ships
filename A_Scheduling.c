@@ -22,7 +22,7 @@ void *execute_process(void *arg)
     return NULL;
 }
 //                                                                             ______________________________
-//____________________________________________________________________________/Planificador Round Robin (RR)
+//____________________________________________________________________________/ Round Robin (RR)
 
 void rr_scheduler(linked_list_t *process_list)
 {
@@ -48,15 +48,20 @@ void rr_scheduler(linked_list_t *process_list)
 }
 
 //                                                                             ______________________________
-//____________________________________________________________________________/Planificador Prioridad (qsort)
+//____________________________________________________________________________/ Priority (qsort)
 
 // Comparison function for qsort
-int compareQsort(const void *a, const void *b)
+int comparePriority(const void *a, const void *b)
 {
     return ((const process_t *)a)->priority - ((const process_t *)b)->priority;
 }
 
-void priority_scheduler(linked_list_t *process_list)
+int compareSJF(const void *a, const void *b)
+{
+    return ((const process_t *)a)->burst_time - ((const process_t *)b)->burst_time;
+}
+
+void priority_scheduler(linked_list_t *process_list, int a)
 {
 
     int count = 0;
@@ -81,8 +86,17 @@ void priority_scheduler(linked_list_t *process_list)
     }
 
     //  qsort
-    qsort(process_array, count, sizeof(process_t),
-          compareQsort);
+
+    if (a == 1)
+    {
+        qsort(process_array, count, sizeof(process_t),
+              comparePriority);
+    }
+    else
+    {
+        qsort(process_array, count, sizeof(process_t),
+              compareSJF);
+    }
 
     // Volver a convertir el array ordenado en una lista enlazada
     current = process_list->head;
@@ -93,16 +107,31 @@ void priority_scheduler(linked_list_t *process_list)
     }
 
     // Mostrar la lista enlazada ordenada
-    printf("\nLista ordenada (por prioridad):\n");
+    printf("\nLista ordenada:\n");
     current = process_list->head;
-    while (current != NULL)
+
+    if (a == 1)
     {
-        printf("ID: %d, Prioridad: %d\n", current->id, current->priority);
-        current = current->next;
+        while (current != NULL)
+        {
+            printf("ID: %d, Prioridad: %d\n", current->id, current->priority);
+            current = current->next;
+        }
+    }
+    else
+    {
+        while (current != NULL)
+        {
+            printf("ID: %d, SJF: %d\n", current->id, current->priority);
+            current = current->next;
+        }
     }
 
     free(process_array);
 }
+
+//                                                                             ______________________________
+//____________________________________________________________________________/ Shortest Job First (SJF)
 
 int main()
 {
@@ -119,7 +148,7 @@ int main()
 
     // Ejecutar el planificador Round Robin
     // rr_scheduler(&process_list);
-    priority_scheduler(&process_list);
+    priority_scheduler(&process_list, 0);
 
     return 0;
 }
