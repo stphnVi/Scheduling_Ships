@@ -81,7 +81,7 @@ void priority_scheduler(linked_list_t *process_list)
     }
 
     //  qsort
-    qsort(process_list, count, sizeof(process_t),
+    qsort(process_array, count, sizeof(process_t),
           compareQsort);
 
     // Volver a convertir el array ordenado en una lista enlazada
