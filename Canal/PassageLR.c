@@ -5,12 +5,12 @@
 #include "Structs/Node.h"
 #include "Structs/NodeList.h"
 
-void passage(struct Boat *boat, struct NodeList *list) {
+void passageLR(struct Boat *boat, struct NodeList *list) {
     struct Node* current = list->head;
     while (current != NULL) {
         short check_movement = move_boat(current, boat);
         if (check_movement == 1) {
-            current = current->next;
+            current = current->prev;
             sleep(boat->velocity);
         }else {
             sleep(boat->velocity);

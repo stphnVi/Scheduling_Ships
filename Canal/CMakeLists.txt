@@ -9,7 +9,7 @@ add_executable(Canal
         Structs/BoatList.h
         Structs/BoatList.c
         Equity.c
-        Passage.c
+        PassageRL.c
         Structs/Canal.c
         Structs/Canal.h
         Structs/Node.h
@@ -19,4 +19,5 @@ add_executable(Canal
         Setup.c
         Structs/NodeFactory.c
         Structs/NodeFactory.h
-        Structs/BoatFactory.c)
+        Structs/BoatFactory.c
+        PassageLR.c)
