@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Boat_list.h"
+#include "BoatList.h"
 
 void addBoatToList(struct BoatList* list, struct Boat boat) {
     struct Boat* newBoat = (struct Boat*)malloc(sizeof(struct Boat));

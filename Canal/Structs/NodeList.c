@@ -1,8 +1,6 @@
 #include "NodeList.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-
 #include "Node.h"
 
 // Función para inicializar una lista vacía
@@ -12,18 +10,15 @@ void initNodeList(struct NodeList* list, const char* name) {
 }
 
 // Función para agregar un nodo al final de la lista
-void appendNode(struct NodeList* list, short id, short available) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->id = id;
-    newNode->available = available;
-    newNode->next = NULL;
-    newNode->prev = list->tail;
+void appendNode(struct NodeList* list, struct Node* node) {
+    node->next = NULL;
+    node->prev = list->tail;
 
     if (list->tail != NULL) {
-        list->tail->next = newNode;
+        list->tail->next = node;
     } else {
-        list->head = newNode;  // Si la lista estaba vacía
+        list->head = node;  // Si la lista estaba vacía
     }
 
-    list->tail = newNode;
+    list->tail = node;
 }

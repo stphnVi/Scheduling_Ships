@@ -6,8 +6,8 @@
 struct Boat{
     short priority;
     short velocity;
-    char type[1];
-    char direction[1];
+    char type;
+    char direction;
     short position;
     struct Boat* next;
 };

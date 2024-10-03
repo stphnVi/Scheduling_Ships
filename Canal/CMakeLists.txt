@@ -6,8 +6,8 @@ set(CMAKE_C_STANDARD 11)
 add_executable(Canal
         Structs/Boat.h
         Structs/BoatFactory.h
-        Structs/Boat_list.h
-        Structs/Boat_list.c
+        Structs/BoatList.h
+        Structs/BoatList.c
         Equity.c
         Passage.c
         Structs/Canal.c
@@ -16,4 +16,7 @@ add_executable(Canal
         Structs/NodeList.c
         Structs/NodeList.h
         Structs/Boat.c
-        Setup.c)
+        Setup.c
+        Structs/NodeFactory.c
+        Structs/NodeFactory.h
+        Structs/BoatFactory.c)

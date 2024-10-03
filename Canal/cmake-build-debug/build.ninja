@@ -85,11 +85,23 @@ build CMakeFiles/Canal.dir/Structs/Boat.c.o: C_COMPILER__Canal_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/Canal.dir
   OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
 
-build CMakeFiles/Canal.dir/Set-up.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Set-up.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Set-up.c.o.d
+build CMakeFiles/Canal.dir/Setup.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Setup.c || cmake_object_order_depends_target_Canal
+  DEP_FILE = CMakeFiles/Canal.dir/Setup.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/Canal.dir
   OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+
+build CMakeFiles/Canal.dir/Structs/NodeFactory.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/NodeFactory.c || cmake_object_order_depends_target_Canal
+  DEP_FILE = CMakeFiles/Canal.dir/Structs/NodeFactory.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Canal.dir
+  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+
+build CMakeFiles/Canal.dir/Structs/BoatFactory.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/BoatFactory.c || cmake_object_order_depends_target_Canal
+  DEP_FILE = CMakeFiles/Canal.dir/Structs/BoatFactory.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Canal.dir
+  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
 
 
 # =============================================================================
@@ -99,7 +111,7 @@ build CMakeFiles/Canal.dir/Set-up.c.o: C_COMPILER__Canal_unscanned_Debug /home/j
 #############################################
 # Link the executable Canal
 
-build Canal: C_EXECUTABLE_LINKER__Canal_Debug CMakeFiles/Canal.dir/Structs/Boat_list.c.o CMakeFiles/Canal.dir/Equity.c.o CMakeFiles/Canal.dir/Passage.c.o CMakeFiles/Canal.dir/Structs/Canal.c.o CMakeFiles/Canal.dir/Structs/NodeList.c.o CMakeFiles/Canal.dir/Structs/Boat.c.o CMakeFiles/Canal.dir/Set-up.c.o
+build Canal: C_EXECUTABLE_LINKER__Canal_Debug CMakeFiles/Canal.dir/Structs/Boat_list.c.o CMakeFiles/Canal.dir/Equity.c.o CMakeFiles/Canal.dir/Passage.c.o CMakeFiles/Canal.dir/Structs/Canal.c.o CMakeFiles/Canal.dir/Structs/NodeList.c.o CMakeFiles/Canal.dir/Structs/Boat.c.o CMakeFiles/Canal.dir/Setup.c.o CMakeFiles/Canal.dir/Structs/NodeFactory.c.o CMakeFiles/Canal.dir/Structs/BoatFactory.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Canal.dir
   POST_BUILD = :

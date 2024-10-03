@@ -2,12 +2,10 @@
 #define CANAL_H
 
 struct Canal {
-    short size;
-    short speed;
-    char control[1];
+    char control;
     short time;
     short w;
-    struct NodeList* list;
+    struct NodeList* nodes;
     struct BoatList* right;
     struct BoatList* left;
 };
