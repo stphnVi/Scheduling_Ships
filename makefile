@@ -2,11 +2,11 @@ CC = gcc
 CFLAGS = -Wall -pthread 
 
 # Archivos fuente
-SRCS = A_Scheduling.c   # Archivos fuente .c
+SRCS = interfaceRasp.c   # Archivos fuente .c
 OBJS = $(SRCS:.c=.o)
 
 # Nombre del archivo ejecutable
-EXEC = scheduler
+EXEC = raspy
 
 # Regla por defecto (lo que se ejecuta al ejecutar `make` sin argumentos)
 all: $(EXEC)
@@ -21,4 +21,4 @@ clean:
 	rm -f $(OBJS) $(EXEC)
 
 # Dependencias
-A_Scheduling.o: scheduling.h
+
