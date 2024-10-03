@@ -47,8 +47,8 @@ void rr_scheduler(linked_list_t *process_list)
     }
 }
 
-//                                                                             ______________________________
-//____________________________________________________________________________/ Priority (qsort)
+//                                                                             _____________________________________
+//____________________________________________________________________________/ Shortest Job First (SJF) && Priority
 
 // Comparison function for qsort
 int comparePriority(const void *a, const void *b)
@@ -61,7 +61,7 @@ int compareSJF(const void *a, const void *b)
     return ((const process_t *)a)->burst_time - ((const process_t *)b)->burst_time;
 }
 
-void priority_scheduler(linked_list_t *process_list, int a)
+void priSJF_scheduler(linked_list_t *process_list, int a)
 {
 
     int count = 0;
@@ -130,8 +130,20 @@ void priority_scheduler(linked_list_t *process_list, int a)
     free(process_array);
 }
 
-//                                                                             ______________________________
-//____________________________________________________________________________/ Shortest Job First (SJF)
+//                                                                             _____________________________________
+//____________________________________________________________________________/        First-come, first-served
+
+void FCFS_scheduler(linked_list_t *process_list)
+{
+    process_t *current = process_list->head;
+
+    printf("\nLista ordenada con First-come, first-served:\n");
+    while (current != NULL)
+    {
+        printf("ID: %d, Prioridad: %d\n", current->id, current->priority);
+        current = current->next;
+    }
+}
 
 int main()
 {
@@ -146,9 +158,9 @@ int main()
     add_process(&process_list, create_process(3, 2, 3));
     add_process(&process_list, create_process(4, 5, 25));
 
-    // Ejecutar el planificador Round Robin
     // rr_scheduler(&process_list);
-    priority_scheduler(&process_list, 0);
+    // priSJF_scheduler(&process_list, 1); // 1= priority, else = sjf
+    FCFS_scheduler(&process_list);
 
     return 0;
 }
