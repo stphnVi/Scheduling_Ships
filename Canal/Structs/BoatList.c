@@ -24,7 +24,18 @@ void addBoatToList(struct BoatList* list, struct Boat boat) {
 }
 struct Boat* getHead(struct BoatList* list) {
     if (list == NULL) {
-        return NULL; // Verifica si la lista es NULL para evitar errores
+        return NULL; //
     }
     return list->head;
+}
+void deleteHead(struct BoatList* list) {
+    if (list == NULL || list->head == NULL) {
+        return;
+    }
+
+    struct Boat* temp = list->head;
+    list->head = list->head->next;
+
+    free(temp);
+    list->count--;
 }
