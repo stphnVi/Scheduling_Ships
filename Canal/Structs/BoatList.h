@@ -7,4 +7,6 @@ struct BoatList {
     int count;
 };
 void addBoatToList(struct BoatList* list, struct Boat boat);
+struct Boat* getHead(struct BoatList* list);
+
 #endif // BOAT_LIST_H

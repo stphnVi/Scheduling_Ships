@@ -20,4 +20,7 @@ add_executable(Canal
         Structs/NodeFactory.c
         Structs/NodeFactory.h
         Structs/BoatFactory.c
-        PassageLR.c)
+        PassageLR.c
+        "Scheduling_Ships .c"
+        "Threads Adapter.c"
+        Passage.h)

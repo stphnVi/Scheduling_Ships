@@ -22,3 +22,9 @@ void addBoatToList(struct BoatList* list, struct Boat boat) {
     }
     list->count++;
 }
+struct Boat* getHead(struct BoatList* list) {
+    if (list == NULL) {
+        return NULL; // Verifica si la lista es NULL para evitar errores
+    }
+    return list->head;
+}
