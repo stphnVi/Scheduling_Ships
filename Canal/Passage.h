@@ -8,6 +8,7 @@ struct ThreadData {
 
 void passageLR(struct Boat *boat, struct NodeList *list);
 void passageRL(struct Boat *boat, struct NodeList *list);
-void* thread_function(void* arg);
+void* thread_functionR(void* arg);
+void* thread_functionL(void* arg);
 
 #endif //PASSAGE_H

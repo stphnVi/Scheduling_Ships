@@ -18,7 +18,7 @@ void Equity(int W, char direction, struct BoatList *right, struct BoatList *left
                 thread_data[i]->list = list;
                 deleteHead(right);
                 
-                pthread_create(&threads[i], NULL, thread_function, (void*) thread_data[i]);
+                pthread_create(&threads[i], NULL, thread_functionR, (void*) thread_data[i]);
             }
 
             for (int i = 0; i < W; i++) {
@@ -36,7 +36,7 @@ void Equity(int W, char direction, struct BoatList *right, struct BoatList *left
                 thread_data[i]->list = list;
                 deleteHead(left);
 
-                pthread_create(&threads[i], NULL, thread_function, (void*) thread_data[i]);
+                pthread_create(&threads[i], NULL, thread_functionL, (void*) thread_data[i]);
             }
             for (int i = 0; i < W; i++) {
                 pthread_join(threads[i], NULL);
@@ -46,7 +46,6 @@ void Equity(int W, char direction, struct BoatList *right, struct BoatList *left
             Equity(W, 'R', right, left, list);
         }
     }
-
     free(threads);
     free(thread_data);
 }

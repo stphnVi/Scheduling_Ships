@@ -121,6 +121,12 @@ build CMakeFiles/Canal.dir/Threads_Adapter.c.o: C_COMPILER__Canal_unscanned_Debu
   OBJECT_DIR = CMakeFiles/Canal.dir
   OBJECT_FILE_DIR = CMakeFiles/Canal.dir
 
+build CMakeFiles/Canal.dir/TIca.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/TIca.c || cmake_object_order_depends_target_Canal
+  DEP_FILE = CMakeFiles/Canal.dir/TIca.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Canal.dir
+  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Canal
@@ -129,7 +135,7 @@ build CMakeFiles/Canal.dir/Threads_Adapter.c.o: C_COMPILER__Canal_unscanned_Debu
 #############################################
 # Link the executable Canal
 
-build Canal: C_EXECUTABLE_LINKER__Canal_Debug CMakeFiles/Canal.dir/Structs/BoatList.c.o CMakeFiles/Canal.dir/Equity.c.o CMakeFiles/Canal.dir/PassageRL.c.o CMakeFiles/Canal.dir/Structs/Canal.c.o CMakeFiles/Canal.dir/Structs/NodeList.c.o CMakeFiles/Canal.dir/Structs/Boat.c.o CMakeFiles/Canal.dir/Setup.c.o CMakeFiles/Canal.dir/Structs/NodeFactory.c.o CMakeFiles/Canal.dir/Structs/BoatFactory.c.o CMakeFiles/Canal.dir/PassageLR.c.o CMakeFiles/Canal.dir/Scheduling_Ships_.c.o CMakeFiles/Canal.dir/Threads_Adapter.c.o
+build Canal: C_EXECUTABLE_LINKER__Canal_Debug CMakeFiles/Canal.dir/Structs/BoatList.c.o CMakeFiles/Canal.dir/Equity.c.o CMakeFiles/Canal.dir/PassageRL.c.o CMakeFiles/Canal.dir/Structs/Canal.c.o CMakeFiles/Canal.dir/Structs/NodeList.c.o CMakeFiles/Canal.dir/Structs/Boat.c.o CMakeFiles/Canal.dir/Setup.c.o CMakeFiles/Canal.dir/Structs/NodeFactory.c.o CMakeFiles/Canal.dir/Structs/BoatFactory.c.o CMakeFiles/Canal.dir/PassageLR.c.o CMakeFiles/Canal.dir/Scheduling_Ships_.c.o CMakeFiles/Canal.dir/Threads_Adapter.c.o CMakeFiles/Canal.dir/TIca.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Canal.dir
   POST_BUILD = :
