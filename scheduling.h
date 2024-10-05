@@ -1,42 +1,93 @@
+#ifndef TASK_LIST_H
+#define TASK_LIST_H
+
 #include <pthread.h>
-#define QUANTUM 2 // Tiempo en segundos
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef struct thread
+#define QUANTUM 2
+
+// Definición de la estructura de las tareas
+typedef struct task
 {
-    int id;              
-    int burst_time;      // Tiempo de ejecución restante
-    int priority;        
-    pthread_t thread_id; // Identificador del hilo (pthread)
-    struct thread *next; // Siguiente hilo en la lista
-} thread_t;
+    int task_id;
+    int duration; // duracion de la terea
+    int priority; // Prioridad
+    struct task *next;
+} task_t;
 
-// Función para crear un nuevo hilo
+// Lista de tareas (cabeza de la lista enlazada)
+task_t *task_list = NULL;
 
-thread_t *create_thread(int id, int burst_time, int priority)
+//  sincronización
+pthread_mutex_t mutex;
+
+// Prototipos de las funciones
+void add_task(int task_id, int duration, int priority);
+task_t *remove_task();
+void free_task_list();
+
+// Implementación: agregar
+void add_task(int task_id, int duration, int priority)
 {
-    thread_t *new_thread = (thread_t *)malloc(sizeof(thread_t));
-    new_thread->id = id;
-    new_thread->burst_time = burst_time;
-    new_thread->priority = priority;
-    new_thread->next = NULL;
-    return new_thread;
-}
+    pthread_mutex_lock(&mutex);
 
-// Función para agregar un hilo a la lista enlazada
+    task_t *new_task = malloc(sizeof(task_t));
+    new_task->task_id = task_id;
+    new_task->duration = duration;
+    new_task->priority = priority;
+    new_task->next = NULL;
 
-void add_thread(thread_t **head, thread_t *new_thread)
-{
-    if (*head == NULL)
+    if (task_list == NULL)
     {
-        *head = new_thread;
+        task_list = new_task;
     }
     else
     {
-        thread_t *current = *head;
-        while (current->next != NULL)
+        task_t *temp = task_list;
+        while (temp->next != NULL)
         {
-            current = current->next;
+            temp = temp->next;
         }
-        current->next = new_thread;
+        temp->next = new_task;
     }
+
+    pthread_mutex_unlock(&mutex);
 }
+
+// Implementación: remover la primera tarea de la lista
+task_t *remove_task()
+{
+    pthread_mutex_lock(&mutex);
+
+    if (task_list == NULL)
+    {
+        pthread_mutex_unlock(&mutex);
+        return NULL;
+    }
+
+    task_t *task_to_remove = task_list;
+    task_list = task_list->next;
+
+    pthread_mutex_unlock(&mutex);
+
+    return task_to_remove;
+}
+
+// Función para liberar memoria
+void free_task_list()
+{
+    pthread_mutex_lock(&mutex);
+
+    task_t *temp;
+    while (task_list != NULL)
+    {
+        temp = task_list;
+        task_list = task_list->next;
+        free(temp);
+    }
+
+    pthread_mutex_unlock(&mutex);
+}
+
+#endif // TASK_LIST_H

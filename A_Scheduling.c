@@ -1,130 +1,141 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-
-#include <signal.h> // Asegúrate de incluir esta línea
-#include <sys/time.h>
-#include <unistd.h>
 #include "scheduling.h"
+#include <unistd.h>
 
-void *execute_thread(void *arg)
+// Función que ejecuta una tarea (simulación) POSIBLEMENTE HAYA QUE CAMBIAR LA LECTURA DEL QUANTUM
+void *execute_task(void *arg)
 {
-    thread_t *thread = (thread_t *)arg;
+    task_t *task = (task_t *)arg;
+    printf("Hilo ejecutando tarea con ID: %d por %d segundos\n", task->task_id, QUANTUM);
+    sleep(QUANTUM); // Simula ejecución por el quantum
+    task->duration -= QUANTUM;
 
-    // Ejecutar el quantum
-    int time_to_run = (thread->burst_time < QUANTUM) ? thread->burst_time : QUANTUM;
-
-    printf("Thread %d running for %d second(s), remaining burst time: %d\n",
-           thread->id, time_to_run, thread->burst_time - time_to_run);
-
-    sleep(time_to_run); // Simula el tiempo de ejecución
-    thread->burst_time -= time_to_run;
-
-    // Informar si el hilo ha terminado
-    if (thread->burst_time <= 0)
-    {
-        printf("Thread %d has finished execution.\n", thread->id);
-    }
-
-    return NULL;
+    pthread_exit(NULL);
 }
 
-//                                                                             _____________________________________
-//____________________________________________________________________________/         Round Robin
-
-void rr_scheduler(thread_t *thread_list)
+//                                                                 _________________________________________
+//________________________________________________________________/ Algoritmo Round Robin
+void round_robin_scheduler()
 {
     while (1)
     {
-        int all_finished = 1; // Verifica si todos los hilos han terminado
+        task_t *current_task = remove_task(); // Obtener la primera tarea
 
-        thread_t *current_thread = thread_list; // Reinicia con el primer hilo
-
-        while (current_thread != NULL)
+        if (current_task == NULL)
         {
-            if (current_thread->burst_time > 0)
-            {
-                all_finished = 0;
-
-                pthread_create(&current_thread->thread_id, NULL, execute_thread, (void *)current_thread);
-                pthread_join(current_thread->thread_id, NULL); // Espera a que termine
-            }
-            current_thread = current_thread->next; // Avanza al siguiente hilo
+            printf("No hay más tareas.\n");
+            break;
         }
 
-        if (all_finished)
+        pthread_t thread;
+        pthread_create(&thread, NULL, execute_task, current_task);
+        pthread_join(thread, NULL); // Esperar a que el hilo termine
+
+        // Si la tarea no ha terminado, agregarla al final de la lista
+        if (current_task->duration > 0)
         {
-            break; // Si todos los hilos han terminado, salir
+            add_task(current_task->task_id, current_task->duration, current_task->priority);
+        }
+        else
+        {
+            printf("Tarea %d completada.\n", current_task->task_id);
+            free(current_task); // Liberar memoria de la tarea
         }
     }
 }
+//                                                                 _________________________________________
+//________________________________________________________________/ Algoritmo Prioridad
 
-//                                                                             _____________________________________
-//____________________________________________________________________________/        First-come, first-served
-
-void FCFS_scheduler(thread_t *thread_list)
+//  comparación para qsort
+int compare_tasks(const void *a, const void *b)
 {
-    // int all_finished = 1; // Verifica si todos los hilos han terminado
+    task_t *task_a = *(task_t **)a; // Convertir punteros de void a punteros a task_t
+    task_t *task_b = *(task_t **)b;
 
-    thread_t *current_thread = thread_list; // Reinicia con el primer hilo
-
-    printf("\nLista ordenada con First-come, first-served:\n");
-    while (current_thread != NULL)
-    {
-        pthread_create(&current_thread->thread_id, NULL, execute_thread, (void *)current_thread);
-        pthread_join(current_thread->thread_id, NULL);
-        // printf("ID: %d, Prioridad: %d\n", current_thread->id, current_thread->priority);
-        current_thread = current_thread->next;
-    }
+    // Ordenar de mayor a menor prioridad
+    return task_b->priority - task_a->priority;
 }
 
-//                                                                             _____________________________________
-//____________________________________________________________________________/ Shortest Job First (SJF) && Priority
+// Función para ejecutar tareas en orden de prioridad
+void execute_tasks_by_priority()
+{
+    // Contar el número de tareas
+    int count = 0;
+    task_t *temp = task_list;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+
+    // Crear un arreglo de punteros a tareas
+    task_t **tasks_array = malloc(count * sizeof(task_t *));
+    temp = task_list;
+    for (int i = 0; i < count; i++)
+    {
+        tasks_array[i] = temp;
+        temp = temp->next;
+    }
+
+    // Ordenar el arreglo por prioridad
+    qsort(tasks_array, count, sizeof(task_t *), compare_tasks);
+
+    // Ejecutar las tareas en orden de prioridad
+    pthread_t threads[count]; // Array para los hilos
+    for (int i = 0; i < count; i++)
+    {
+        while (tasks_array[i]->duration > 0)
+        {                                                                    // Mientras haya duración restante
+            pthread_create(&threads[i], NULL, execute_task, tasks_array[i]); // Crear hilo para la tarea
+            pthread_join(threads[i], NULL);                                  // Esperar a que el hilo termine
+        }
+    }
+
+    // Liberar el arreglo temporal
+    free(tasks_array);
+}
+
+//                                                                 __________________________________________
+//________________________________________________________________/  Algoritmo First Come First Served (FCFS)
+void fcfs_scheduler()
+{
+    while (1)
+    {
+        task_t *current_task = remove_task(); // Obtener la primera tarea
+
+        if (current_task == NULL)
+        {
+            printf("No hay más tareas.\n");
+            break;
+        }
+
+        pthread_t thread;
+        pthread_create(&thread, NULL, execute_task, current_task);
+        pthread_join(thread, NULL); // Esperar a que el hilo termine
+
+        printf("Tarea %d completada.\n", current_task->task_id);
+        free(current_task); // Liberar memoria de la tarea
+    }
+}
 
 int main()
 {
-    thread_t *thread_list = NULL;
+    pthread_mutex_init(&mutex, NULL);
 
-    // Agregar hilos a la lista
-    add_thread(&thread_list, create_thread(1, 7, 1));
-    add_thread(&thread_list, create_thread(2, 4, 2));
-    add_thread(&thread_list, create_thread(3, 5, 3));
+    // Agregar tareas a la lista
+    add_task(1, 3, 2); // Tarea 1 con duración 3 y prioridad 2
+    add_task(2, 1, 3); // Tarea 2 con duración 1 y prioridad 3
+    add_task(3, 4, 1); // Tarea 3 con duración 4 y prioridad 1
 
-    // Ejecutar el planificador Round Robin
-    rr_scheduler(thread_list);
+    // printf("Iniciando Round Robin Scheduler:\n");
+    // round_robin_scheduler(); // Ejecutar Round Robin
+    // printf("Iniciando Fcfs:\n");
+    // fcfs_scheduler();
+    printf("Iniciando prioridad:\n");
+    execute_tasks_by_priority();
 
-    FCFS_scheduler(thread_list);
-    // priSJF_scheduler(thread_list, 1); // 1= priority, else = sjf
-
-    // Liberar memoria (opcional)
-    while (thread_list != NULL)
-    {
-        thread_t *temp = thread_list;
-        thread_list = thread_list->next;
-        free(temp);
-    }
+    // Limpiar la lista destruir el mutex
+    free_task_list();
+    pthread_mutex_destroy(&mutex);
 
     return 0;
 }
-
-/*
-// Crear la lista de procesos
-linked_list_t process_list;
-process_list.head = NULL;
-process_list.tail = NULL;
-
-
-// Crear los procesos con tiempos de burst diferentes
-add_process(&process_list, create_process(1, 8, 1)); // Proceso 1, tiempo de burst 3, prioridad 1
-add_process(&process_list, create_process(2, 6, 5));
-add_process(&process_list, create_process(3, 4, 3));
-add_process(&process_list, create_process(4, 2, 25));
-
-//rr_scheduler(&process_list);
-// priSJF_scheduler(&process_list, 1); // 1= priority, else = sjf
-// FCFS_scheduler(&process_list);
-// real_time_scheduler(&process_list);
-
-
-return 0;
-*/
