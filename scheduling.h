@@ -1,46 +1,42 @@
-#define QUANTUM 1       // Quantum
-#define NUM_PROCESSES 4 // # procesos
+#include <pthread.h>
+#define QUANTUM 2 // Tiempo en segundos
 
-// estructura de un proceso
-typedef struct process
+typedef struct thread
 {
-    int id;
-    int burst_time;
-    int priority;
-    int time;
-    struct process *next;
-} process_t;
+    int id;              
+    int burst_time;      // Tiempo de ejecución restante
+    int priority;        
+    pthread_t thread_id; // Identificador del hilo (pthread)
+    struct thread *next; // Siguiente hilo en la lista
+} thread_t;
 
-// lista enlazada
-typedef struct
-{
-    process_t *head;
-    process_t *tail;
-} linked_list_t;
+// Función para crear un nuevo hilo
 
-// Función para crear un nuevo proceso
-process_t *create_process(int id, int burst_time, int priority)
+thread_t *create_thread(int id, int burst_time, int priority)
 {
-    process_t *new_process = (process_t *)malloc(sizeof(process_t)); // para reservar memoria dinámica en el heap para un nuevo proceso del tipo process_t
-    new_process->id = id;
-    new_process->burst_time = burst_time;
-    new_process->priority = priority;
-    new_process->time = burst_time;
-    new_process->next = NULL;
-    return new_process;
+    thread_t *new_thread = (thread_t *)malloc(sizeof(thread_t));
+    new_thread->id = id;
+    new_thread->burst_time = burst_time;
+    new_thread->priority = priority;
+    new_thread->next = NULL;
+    return new_thread;
 }
 
-// Función para agregar un proceso a la lista enlazada
-void add_process(linked_list_t *list, process_t *new_process)
+// Función para agregar un hilo a la lista enlazada
+
+void add_thread(thread_t **head, thread_t *new_thread)
 {
-    if (list->head == NULL)
+    if (*head == NULL)
     {
-        list->head = new_process;
-        list->tail = new_process;
+        *head = new_thread;
     }
     else
     {
-        list->tail->next = new_process;
-        list->tail = new_process;
+        thread_t *current = *head;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+        current->next = new_thread;
     }
 }
