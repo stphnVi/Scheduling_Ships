@@ -14,6 +14,7 @@
 
 #define STACK_SIZE 1024 * 1024
 #define MAX_THREADS 10
+#define ID_COUNT 0
 
 typedef struct {
     int id;                    // Identificador del hilo
@@ -42,21 +43,25 @@ void CEThread_run_next() {
 void CEThread_run(CEThread *thread) {
     if(setjmp(thread->context) == 0) {
         thread->function(thread->arg); // ejecutar el hilo pasando el argumento
+        printf("Hilo corriendo\n");
         thread->finished = 1; // marcar como terminado
     }
 }
 
-int CEThread_create(CEThread *thread, int id, void *(*function)(void *), void *arg){
+// CREATE: Crear un hilo
+int CEThread_create(CEThread *thread, void *(*function)(void *), void *arg){
     if (thread == NULL | function == NULL) { 
         return -1;  // generar error si el puntero es nulo
     }
 
     //falta verificar que el id sea unico 
-    thread->id = id;             // set id
+    thread->id = ID_COUNT;             // set id
+    ID_COUNT + 1;
     thread->function = function; // set function
     thread->arg = arg;           // set argument
     thread->finished = 0;        // set status: hilo no finalizado
 
+    printf("Hilo creado: %n\n", thread);
     return 0;  
 
 }

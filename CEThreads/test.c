@@ -15,8 +15,8 @@ int main() {
     CEThread thread2;
 
     // Crear dos hilos
-    CEThread_create(&thread1, 1, function, "Hilo 1");
-    CEThread_create(&thread2, 2, function, "Hilo 2");
+    CEThread_create(&thread1, function, "Hilo 1");
+    CEThread_create(&thread2, function, "Hilo 2");
 
     // Iniciar la ejecucion de hilos
     CEThread_run(&thread1);
