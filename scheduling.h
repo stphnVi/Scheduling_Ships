@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define QUANTUM 2
+#define QUANTUM 1
 
 // Definición de la estructura de las tareas
 typedef struct task

@@ -43,10 +43,10 @@ void round_robin_scheduler()
     }
 }
 //                                                                 _________________________________________
-//________________________________________________________________/ Algoritmo Prioridad
+//________________________________________________________________/ Algoritmo Prioridad & SJF
 
 //  comparación para qsort
-int compare_tasks(const void *a, const void *b)
+int compare_priority(const void *a, const void *b)
 {
     task_t *task_a = *(task_t **)a; // Convertir punteros de void a punteros a task_t
     task_t *task_b = *(task_t **)b;
@@ -55,8 +55,16 @@ int compare_tasks(const void *a, const void *b)
     return task_b->priority - task_a->priority;
 }
 
+int compare_SJF(const void *a, const void *b)
+{
+    task_t *task_a = *(task_t **)a;
+    task_t *task_b = *(task_t **)b;
+
+    return task_a->duration - task_b->duration;
+}
+
 // Función para ejecutar tareas en orden de prioridad
-void execute_tasks_by_priority()
+void priSJF_scheduler(int a)
 {
     // Contar el número de tareas
     int count = 0;
@@ -76,8 +84,15 @@ void execute_tasks_by_priority()
         temp = temp->next;
     }
 
-    // Ordenar el arreglo por prioridad
-    qsort(tasks_array, count, sizeof(task_t *), compare_tasks);
+    if (a == 1)
+    {
+        // Ordenar el arreglo por prioridad
+        qsort(tasks_array, count, sizeof(task_t *), compare_priority);
+    }
+    else // Ordenar el arreglo por tiempo
+    {
+        qsort(tasks_array, count, sizeof(task_t *), compare_SJF);
+    }
 
     // Ejecutar las tareas en orden de prioridad
     pthread_t threads[count]; // Array para los hilos
@@ -120,7 +135,7 @@ void fcfs_scheduler()
 int main()
 {
     pthread_mutex_init(&mutex, NULL);
-
+    int a = 0;
     // Agregar tareas a la lista
     add_task(1, 3, 2); // Tarea 1 con duración 3 y prioridad 2
     add_task(2, 1, 3); // Tarea 2 con duración 1 y prioridad 3
@@ -131,7 +146,7 @@ int main()
     // printf("Iniciando Fcfs:\n");
     // fcfs_scheduler();
     printf("Iniciando prioridad:\n");
-    execute_tasks_by_priority();
+    priSJF_scheduler(a);
 
     // Limpiar la lista destruir el mutex
     free_task_list();
