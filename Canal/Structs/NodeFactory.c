@@ -5,7 +5,7 @@ struct Node create_node(short id) {
     struct Node node;
 
     node.id = id;
-    node.available = 1;
+                      node.available = 1;
     node.next = NULL;
     node.prev = NULL;
 

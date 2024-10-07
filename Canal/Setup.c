@@ -23,14 +23,16 @@ struct Canal setup(int length, char mode, short speed, short w, short time , int
     initNodeList(&node_list);
     while (i < length + 1) {
         appendNode(&node_list, create_node(i));
-        i++;
+         i++;
     }
     struct BoatList west;
+    initBoatList(&west);
     while (left < quantity) {
         addBoatToList(&west, createBoat(COMMON,'L', speed));
         left++;
     }
     struct BoatList east;
+    initBoatList(&east);
     while (right < quantity) {
         addBoatToList(&east, createBoat(COMMON,'R', speed));
         right++;

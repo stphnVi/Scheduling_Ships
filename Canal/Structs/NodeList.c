@@ -19,7 +19,7 @@ void appendNode(struct NodeList* list, struct Node node) {
     if (list->tail != NULL) {
         list->tail->next = &node;
     } else {
-        list->head = &node;  // Si la lista estaba vacía
+         list->head = &node;  // Si la lista estaba vacía
     }
 
     list->tail = &node;

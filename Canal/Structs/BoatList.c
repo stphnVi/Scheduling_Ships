@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "BoatList.h"
 
+void initBoatList(struct BoatList* list) {
+    list->head = NULL;
+    list->count = 0;
+}
+
 void addBoatToList(struct BoatList* list, struct Boat boat) {
     struct Boat* newBoat = (struct Boat*)malloc(sizeof(struct Boat));
     if (newBoat == NULL) {
