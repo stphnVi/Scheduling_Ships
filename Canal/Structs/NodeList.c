@@ -19,7 +19,15 @@ void appendNode(struct NodeList* list, struct Node node) {
     if (list->tail != NULL) {
         list->tail->next = &node;
     } else {
+<<<<<<< Updated upstream
          list->head = &node;  // Si la lista estaba vacía
+=======
+<<<<<<< HEAD
+        list->head = node;  // Si la lista estaba vacía
+=======
+        list->head = &node;  // Si la lista estaba vacía
+>>>>>>> parent of 0fb0959 (Update the memory managment)
+>>>>>>> Stashed changes
     }
 
     list->tail = &node;

@@ -7,6 +7,11 @@
 2	131	1727848184362359762	CMakeFiles/Canal.dir/Structs/Boat_list.c.o	cb31858ada7885a
 77	169	1727848184437361413	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
 133	191	1727848184493362646	CMakeFiles/Canal.dir/Structs/Boat.c.o	2b276a66e9a18cf5
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 4	253	1728262377886087968	CMakeFiles/Canal.dir/PassageRL.c.o	8f57e20fe69ac187
 1	258	1728262377883087980	CMakeFiles/Canal.dir/Structs/BoatList.c.o	40a3605d3bc297a5
 2	262	1728262377884087976	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
@@ -43,6 +48,7 @@
 93	221	1728264778759980477	Canal	86a24df76f5afd48
 2	154	1728264946204331979	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
 154	229	1728264946356333199	Canal	86a24df76f5afd48
+<<<<<<< Updated upstream
 4	83	1728278596282354788	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
 2	143	1728278596281354452	CMakeFiles/Canal.dir/Structs/BoatList.c.o	40a3605d3bc297a5
 3	157	1728278596282354788	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
@@ -53,3 +59,6 @@
 8	102	1728278726312779743	CMakeFiles/Canal.dir/Structs/NodeFactory.c.o	a169051ec83f5c23
 2	115	1728278726306778432	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
 115	178	1728278726419803139	Canal	86a24df76f5afd48
+=======
+>>>>>>> parent of 0fb0959 (Update the memory managment)
+>>>>>>> Stashed changes
