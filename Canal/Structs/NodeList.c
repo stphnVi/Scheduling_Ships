@@ -4,7 +4,7 @@
 #include "Node.h"
 
 // Función para inicializar una lista vacía
-void initNodeList(struct NodeList* list, const char* name) {
+void initNodeList(struct NodeList* list) {
     list->head = NULL;
     list->tail = NULL;
 }
@@ -17,20 +17,6 @@ void appendNode(struct NodeList* list, struct Node* node) {
     if (list->tail != NULL) {
         list->tail->next = node;
     } else {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-         list->head = &node;  // Si la lista estaba vacía
-=======
-<<<<<<< HEAD
-        list->head = node;  // Si la lista estaba vacía
-=======
-        list->head = &node;  // Si la lista estaba vacía
->>>>>>> parent of 0fb0959 (Update the memory managment)
->>>>>>> Stashed changes
-=======
-        list->head = node;  // Si la lista estaba vacía
->>>>>>> parent of 2fb2a4c (Change the memory managment)
-    }
-
     list->tail = node;
+    }
 }

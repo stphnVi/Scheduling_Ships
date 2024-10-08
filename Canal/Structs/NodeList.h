@@ -6,5 +6,6 @@ struct NodeList {
     struct Node* tail;
 };
 
-void appendNode(struct NodeList* list, short id, short available);
+void appendNode(struct NodeList* list, struct Node* node);
+void initNodeList(struct NodeList* list);
 #endif //NODELIST_H

@@ -3,6 +3,8 @@
 #ifndef BOAT_H
 #define BOAT_H
 
+#include "Node.h"
+
 struct Boat{
     short priority;
     short velocity;

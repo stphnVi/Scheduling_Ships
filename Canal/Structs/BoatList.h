@@ -10,4 +10,5 @@ void addBoatToList(struct BoatList* list, struct Boat boat);
 struct Boat* getHead(struct BoatList* list);
 void deleteHead(struct BoatList* list);
 void initBoatList(struct BoatList* list);
+
 #endif // BOAT_LIST_H
