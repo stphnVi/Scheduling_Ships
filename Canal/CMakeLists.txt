@@ -24,5 +24,4 @@ add_executable(Canal
         "Scheduling_Ships .c"
         "Threads Adapter.c"
         Passage.h
-        TIca.c
-        Flow.h)
+        TIca.c)

@@ -7,6 +7,7 @@
 2	131	1727848184362359762	CMakeFiles/Canal.dir/Structs/Boat_list.c.o	cb31858ada7885a
 77	169	1727848184437361413	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
 133	191	1727848184493362646	CMakeFiles/Canal.dir/Structs/Boat.c.o	2b276a66e9a18cf5
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -62,3 +63,5 @@
 =======
 >>>>>>> parent of 0fb0959 (Update the memory managment)
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 2fb2a4c (Change the memory managment)

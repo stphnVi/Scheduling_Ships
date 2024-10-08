@@ -8,6 +8,7 @@
 #include "Structs/Boat.h"
 #include "Structs/BoatList.h"
 
+void appendNode(struct NodeList * list, struct Node * id);
 
 struct Canal setup(int length, char mode, short speed, short w, short time , int quantity) {
     struct Canal canal;
@@ -20,7 +21,6 @@ struct Canal setup(int length, char mode, short speed, short w, short time , int
     int right = 0;
 
     struct NodeList node_list;
-    initNodeList(&node_list);
     while (i < length + 1) {
         appendNode(&node_list, create_node(i));
          i++;

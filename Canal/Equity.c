@@ -20,6 +20,7 @@ void Equity(int W, char direction, struct BoatList *right, struct BoatList *left
                 
                 pthread_create(&threads[i], NULL, thread_functionR, (void*) thread_data[i]);
             }
+
             for (int i = 0; i < W; i++) {
                 pthread_join(threads[i], NULL);
                 free(thread_data[i]);
