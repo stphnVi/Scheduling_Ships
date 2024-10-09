@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.29"
+						"string" : "3.10"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "Canal",
+					"name" : "Scheduling_Ships",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Canal::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Canal-Debug-7c78c63cab657548435b.json",
-					"name" : "Canal",
+					"id" : "my_program::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_program-Debug-2efdb37bd73e4b708ce2.json",
+					"name" : "my_program",
 					"projectIndex" : 0
 				}
 			]

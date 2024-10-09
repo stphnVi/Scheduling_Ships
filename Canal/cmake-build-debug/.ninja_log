@@ -1,67 +1,28 @@
 # ninja log v6
-1	145	1727764491020403695	CMakeFiles/Canal.dir/main.c.o	3d2be084149f2d60
-2	46	1727848184362359762	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
-4	136	1727848184364359807	CMakeFiles/Canal.dir/Passage.c.o	672d1f7368e37e71
-191	268	1727848184551363922	Canal	65485f5b4143181c
-46	77	1727848184406360731	CMakeFiles/Canal.dir/Structs/Canal.c.o	9bc15084f6e95cdc
-2	131	1727848184362359762	CMakeFiles/Canal.dir/Structs/Boat_list.c.o	cb31858ada7885a
-77	169	1727848184437361413	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
-133	191	1727848184493362646	CMakeFiles/Canal.dir/Structs/Boat.c.o	2b276a66e9a18cf5
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-4	253	1728262377886087968	CMakeFiles/Canal.dir/PassageRL.c.o	8f57e20fe69ac187
-1	258	1728262377883087980	CMakeFiles/Canal.dir/Structs/BoatList.c.o	40a3605d3bc297a5
-2	262	1728262377884087976	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
-254	301	1728262378136086957	CMakeFiles/Canal.dir/Structs/Canal.c.o	9bc15084f6e95cdc
+187	262	1728438118829986409	CMakeFiles/my_program.dir/Structs/BoatFactory.c.o	fe9056ddd569f629
 263	392	1728262378145086921	CMakeFiles/Canal.dir/Structs/Boat.c.o	2b276a66e9a18cf5
-6	119	1728262400643001078	CMakeFiles/Canal.dir/Structs/NodeFactory.c.o	a169051ec83f5c23
-4	112	1728262658459623870	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
-5	183	1728262658460623871	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
-112	205	1728262658567623907	CMakeFiles/Canal.dir/Structs/BoatFactory.c.o	21e5bae1dfd85f94
-2	239	1728262658457623870	CMakeFiles/Canal.dir/PassageRL.c.o	8f57e20fe69ac187
-183	306	1728262658638623931	CMakeFiles/Canal.dir/PassageLR.c.o	b17b201c744c6d56
-240	377	1728262658695623951	CMakeFiles/Canal.dir/Threads_Adapter.c.o	4f5fd20619e6021a
-307	425	1728262658762623973	CMakeFiles/Canal.dir/TIca.c.o	4f6d7963ba19bbcf
-2	102	1728262731067677984	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-103	213	1728262731168678099	Canal	86a24df76f5afd48
-2	115	1728262745837695818	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-115	205	1728262745950695963	Canal	86a24df76f5afd48
-2	77	1728263422888042392	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
-78	136	1728263422964043367	Canal	86a24df76f5afd48
-2	83	1728263806920392822	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-91	168	1728263807008393716	Canal	86a24df76f5afd48
-7	84	1728264431919109320	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
-85	155	1728264431998109990	CMakeFiles/Canal.dir/Structs/NodeFactory.c.o	a169051ec83f5c23
-2	181	1728264431914109278	CMakeFiles/Canal.dir/PassageRL.c.o	8f57e20fe69ac187
-4	82	1728264468242416124	CMakeFiles/Canal.dir/PassageLR.c.o	b17b201c744c6d56
-6	86	1728264468244416141	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-5	85	1728264498343669083	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
-3	93	1728264498341669066	CMakeFiles/Canal.dir/PassageRL.c.o	8f57e20fe69ac187
-1	83	1728264533000958978	CMakeFiles/Canal.dir/PassageLR.c.o	b17b201c744c6d56
-1	83	1728264532999958970	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
-2	83	1728264533000958978	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-84	121	1728264533082959662	Canal	86a24df76f5afd48
-2	93	1728264778668979738	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-93	221	1728264778759980477	Canal	86a24df76f5afd48
-2	154	1728264946204331979	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
-154	229	1728264946356333199	Canal	86a24df76f5afd48
-<<<<<<< Updated upstream
-4	83	1728278596282354788	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
-2	143	1728278596281354452	CMakeFiles/Canal.dir/Structs/BoatList.c.o	40a3605d3bc297a5
-3	157	1728278596282354788	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
-84	234	1728278596362381660	CMakeFiles/Canal.dir/Scheduling_Ships_.c.o	fd327bd5250948bc
-143	274	1728278596421401478	CMakeFiles/Canal.dir/TIca.c.o	4f6d7963ba19bbcf
-275	335	1728278596553445818	Canal	86a24df76f5afd48
-3	87	1728278726307778650	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
+131	193	1728457112471555342	CMakeFiles/my_program.dir/Setup.c.o	239a3b032409b419
+132	194	1728438118777985605	CMakeFiles/my_program.dir/Structs/Boat.c.o	30298de4e8e328da
+254	301	1728262378136086957	CMakeFiles/Canal.dir/Structs/Canal.c.o	9bc15084f6e95cdc
 8	102	1728278726312779743	CMakeFiles/Canal.dir/Structs/NodeFactory.c.o	a169051ec83f5c23
-2	115	1728278726306778432	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
+69	131	1728457112408558326	CMakeFiles/my_program.dir/PassageRL.c.o	d610193cb8a1000c
 115	178	1728278726419803139	Canal	86a24df76f5afd48
-=======
->>>>>>> parent of 0fb0959 (Update the memory managment)
->>>>>>> Stashed changes
-=======
->>>>>>> parent of 2fb2a4c (Change the memory managment)
+2	143	1728278596281354452	CMakeFiles/Canal.dir/Structs/BoatList.c.o	40a3605d3bc297a5
+2	27	1728438365129617795	CMakeFiles/my_program.dir/Structs/Canal.c.o	133b5f4895ff0854
+3	157	1728278596282354788	CMakeFiles/Canal.dir/Equity.c.o	7ce9c1f83e351310
+1	69	1728457112340561546	CMakeFiles/my_program.dir/main.c.o	a605d9a4e418c190
+2	99	1728457112341561498	CMakeFiles/my_program.dir/Equity.c.o	36e93dba03bb398d
+193	230	1728457112532552453	my_program	7780d3df7de80afb
+99	176	1728457112438556905	CMakeFiles/my_program.dir/Structs/BoatList.c.o	580deac067f0b1d0
+3	87	1728278726307778650	CMakeFiles/Canal.dir/Setup.c.o	7af20921f2452fa3
+194	276	1728438118836986517	CMakeFiles/my_program.dir/Structs/NodeFactory.c.o	42a658bbf3cc8de4
+3	82	1728457112342561451	CMakeFiles/my_program.dir/PassageLR.c.o	97ef80d21d87fc64
+2	115	1728278726306778432	CMakeFiles/Canal.dir/Structs/NodeList.c.o	43bf7359fb9cc82a
+4	136	1727848184364359807	CMakeFiles/Canal.dir/Passage.c.o	672d1f7368e37e71
+82	162	1728457112421557710	CMakeFiles/my_program.dir/Structs/NodeList.c.o	13630ff5e05f9c88
+1	145	1727764491020403695	CMakeFiles/Canal.dir/main.c.o	3d2be084149f2d60
+1	48	1728459580986904494	build.ninja	89c2c69bc2121036
+2	131	1727848184362359762	CMakeFiles/Canal.dir/Structs/Boat_list.c.o	cb31858ada7885a
+262	367	1728438118904987568	CMakeFiles/my_program.dir/ThreadsAdapter.c.o	50baf1fc0552e391
+1	51	1728459580986904494	build.ninja	89c2c69bc2121036
+1	67	1728459580998904890	CMakeFiles/my_program.dir/main.c.o	a605d9a4e418c190

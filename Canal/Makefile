@@ -1,8 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g -I./Structs  # Agrega aquí cualquier otro directorio de encabezados que necesites
+CFLAGS = -Wall -Wextra -g -I./Structs  
 
-# Lista de archivos fuente, asegúrate de que NodeList.c esté incluido
-SRCS = Equity.c PassageLR.c PassageRL.c main.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c Structs/NodeFactory.c ThreadsAdapter.c
+SRCS = Equity.c PassageLR.c PassageRL.c Setup.c main.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c Structs/NodeFactory.c ThreadsAdapter.c
 
 # Generar archivos objeto
 OBJS = $(SRCS:.c=.o)

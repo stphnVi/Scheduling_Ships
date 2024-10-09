@@ -3,44 +3,40 @@
 #include "BoatList.h"
 
 void initBoatList(struct BoatList* list) {
-    list->head = NULL;
     list->count = 0;
 }
 
 void addBoatToList(struct BoatList* list, struct Boat boat) {
-    struct Boat* newBoat = (struct Boat*)malloc(sizeof(struct Boat));
-    if (newBoat == NULL) {
-        // Manejo de error en caso de que no se pueda asignar memoria
+    if (list->count >= MAX_BOATS) {
+        printf("La lista de barcos está llena. No se pueden agregar más barcos.\n");
         return;
     }
-    *newBoat = boat; // Copia los datos del barco
-    newBoat->next = NULL;
 
-    if (list->head == NULL) {
-        list->head = newBoat;
-    } else {
-        struct Boat* current = list->head;
-        while (current->next != NULL) {
-            current = current->next;
-        }
-        current->next = newBoat;
+    list->boats[list->count] = boat;
+    list->boats[list->count].next = NULL;
+
+    if (list->count > 0) {
+        list->boats[list->count - 1].next = &list->boats[list->count];
     }
+
     list->count++;
 }
+
+
 struct Boat* getHead(struct BoatList* list) {
-    if (list == NULL) {
-        return NULL; //
+    if (list == NULL || list->count == 0) {
+        return NULL;
     }
-    return list->head;
+    return &list->boats[0];
 }
 void deleteHead(struct BoatList* list) {
-    if (list == NULL || list->head == NULL) {
+    if (list == NULL || list->count == 0) {
         return;
     }
 
-    struct Boat* temp = list->head;
-    list->head = list->head->next;
+    for (int i = 0; i < list->count - 1; i++) {
+        list->boats[i] = list->boats[i + 1];
+    }
 
-    free(temp);
     list->count--;
 }

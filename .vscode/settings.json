@@ -1,8 +1,12 @@
 {
-    "cmake.sourceDirectory": "/home/josue/Desktop/Scheduling_Ships/Canal",
     "files.associations": {
         "boat.h": "c",
         "pthread.h": "c",
         "semaphore.h": "c"
-    }
+    },
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/Structs",
+        "/usr/include",
+        "/usr/local/include"
+    ]
 }

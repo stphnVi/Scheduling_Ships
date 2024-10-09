@@ -2,10 +2,14 @@
 #define BOAT_LIST_H
 
 #include "Boat.h"
+
+#define MAX_BOATS 15
+
 struct BoatList {
-    struct Boat* head; // Puntero al primer barco de la lista    int count; // Número de barcos en la lista
+    struct Boat boats[MAX_BOATS];
     int count;
 };
+
 void addBoatToList(struct BoatList* list, struct Boat boat);
 struct Boat* getHead(struct BoatList* list);
 void deleteHead(struct BoatList* list);

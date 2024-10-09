@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Canal
+# Project: Scheduling_Ships
 # Configurations: Debug
 # =============================================================================
 
@@ -41,107 +41,106 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Canal
+# Object build statements for EXECUTABLE target my_program
 
 
 #############################################
-# Order-only phony target for Canal
+# Order-only phony target for my_program
 
-build cmake_object_order_depends_target_Canal: phony || .
+build cmake_object_order_depends_target_my_program: phony || .
 
-build CMakeFiles/Canal.dir/Structs/BoatList.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/BoatList.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/BoatList.c.o.d
+build CMakeFiles/my_program.dir/main.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/main.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/main.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/Equity.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Equity.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Equity.c.o.d
+build CMakeFiles/my_program.dir/Equity.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Equity.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Equity.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/PassageRL.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/PassageRL.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/PassageRL.c.o.d
+build CMakeFiles/my_program.dir/PassageLR.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/PassageLR.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/PassageLR.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/Structs/Canal.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/Canal.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/Canal.c.o.d
+build CMakeFiles/my_program.dir/PassageRL.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/PassageRL.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/PassageRL.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/Structs/NodeList.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/NodeList.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/NodeList.c.o.d
+build CMakeFiles/my_program.dir/Structs/NodeList.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/NodeList.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Structs/NodeList.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir/Structs
 
-build CMakeFiles/Canal.dir/Structs/Boat.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/Boat.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/Boat.c.o.d
+build CMakeFiles/my_program.dir/Structs/Boat.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/Boat.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Structs/Boat.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir/Structs
 
-build CMakeFiles/Canal.dir/Setup.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Setup.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Setup.c.o.d
+build CMakeFiles/my_program.dir/Structs/BoatList.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/BoatList.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Structs/BoatList.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir/Structs
 
-build CMakeFiles/Canal.dir/Structs/NodeFactory.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/NodeFactory.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/NodeFactory.c.o.d
+build CMakeFiles/my_program.dir/Structs/BoatFactory.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/BoatFactory.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Structs/BoatFactory.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir/Structs
 
-build CMakeFiles/Canal.dir/Structs/BoatFactory.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Structs/BoatFactory.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Structs/BoatFactory.c.o.d
+build CMakeFiles/my_program.dir/ThreadsAdapter.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/ThreadsAdapter.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/ThreadsAdapter.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir/Structs
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/PassageLR.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/PassageLR.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/PassageLR.c.o.d
+build CMakeFiles/my_program.dir/Setup.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Setup.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/Setup.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
-build CMakeFiles/Canal.dir/Scheduling_Ships_.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Scheduling_Ships$ .c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Scheduling_Ships_.c.o.d
+build CMakeFiles/my_program.dir/TIca.c.o: C_COMPILER__my_program_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/TIca.c || cmake_object_order_depends_target_my_program
+  DEP_FILE = CMakeFiles/my_program.dir/TIca.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
-
-build CMakeFiles/Canal.dir/Threads_Adapter.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/Threads$ Adapter.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/Threads_Adapter.c.o.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
-
-build CMakeFiles/Canal.dir/TIca.c.o: C_COMPILER__Canal_unscanned_Debug /home/josue/Desktop/Scheduling_Ships/Canal/TIca.c || cmake_object_order_depends_target_Canal
-  DEP_FILE = CMakeFiles/Canal.dir/TIca.c.o.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Canal.dir
-  OBJECT_FILE_DIR = CMakeFiles/Canal.dir
+  INCLUDES = -I/home/josue/Desktop/Scheduling_Ships/Canal/Structs
+  OBJECT_DIR = CMakeFiles/my_program.dir
+  OBJECT_FILE_DIR = CMakeFiles/my_program.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Canal
+# Link build statements for EXECUTABLE target my_program
 
 
 #############################################
-# Link the executable Canal
+# Link the executable my_program
 
-build Canal: C_EXECUTABLE_LINKER__Canal_Debug CMakeFiles/Canal.dir/Structs/BoatList.c.o CMakeFiles/Canal.dir/Equity.c.o CMakeFiles/Canal.dir/PassageRL.c.o CMakeFiles/Canal.dir/Structs/Canal.c.o CMakeFiles/Canal.dir/Structs/NodeList.c.o CMakeFiles/Canal.dir/Structs/Boat.c.o CMakeFiles/Canal.dir/Setup.c.o CMakeFiles/Canal.dir/Structs/NodeFactory.c.o CMakeFiles/Canal.dir/Structs/BoatFactory.c.o CMakeFiles/Canal.dir/PassageLR.c.o CMakeFiles/Canal.dir/Scheduling_Ships_.c.o CMakeFiles/Canal.dir/Threads_Adapter.c.o CMakeFiles/Canal.dir/TIca.c.o
+build my_program: C_EXECUTABLE_LINKER__my_program_Debug CMakeFiles/my_program.dir/main.c.o CMakeFiles/my_program.dir/Equity.c.o CMakeFiles/my_program.dir/PassageLR.c.o CMakeFiles/my_program.dir/PassageRL.c.o CMakeFiles/my_program.dir/Structs/NodeList.c.o CMakeFiles/my_program.dir/Structs/Boat.c.o CMakeFiles/my_program.dir/Structs/BoatList.c.o CMakeFiles/my_program.dir/Structs/BoatFactory.c.o CMakeFiles/my_program.dir/ThreadsAdapter.c.o CMakeFiles/my_program.dir/Setup.c.o CMakeFiles/my_program.dir/TIca.c.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/Canal.dir
+  OBJECT_DIR = CMakeFiles/my_program.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = Canal
-  TARGET_PDB = Canal.dbg
+  TARGET_FILE = my_program
+  TARGET_PDB = my_program.dbg
 
 
 #############################################
@@ -177,7 +176,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug
 
-build all: phony Canal
+build all: phony my_program
 
 # =============================================================================
 # Built-in targets
@@ -186,14 +185,14 @@ build all: phony Canal
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/josue/Desktop/Scheduling_Ships/Canal/CMakeLists.txt /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/josue/Desktop/Scheduling_Ships/Canal/CMakeLists.txt /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-CXX.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/josue/Desktop/Scheduling_Ships/Canal/CMakeLists.txt /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
+build /home/josue/Desktop/Scheduling_Ships/Canal/CMakeLists.txt /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-CXX.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -1,0 +1,33 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++: Makefile",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Canal/my_program",  // Ruta al ejecutable
+            "args": [],   // Aquí puedes pasar argumentos si es necesario
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Canal",  // Directorio de trabajo
+            "environment": [],
+            "externalConsole": true,  // Puedes cambiar esto a false si prefieres que el terminal esté en VSCode
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",  // Ruta al depurador GDB
+            "setupCommands": [
+                {
+                    "description": "Habilitar el modo de impresión para GDB",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build with make",  // Tarea de precompilación usando make
+            "internalConsoleOptions": "openOnSessionStart",
+            "logging": {
+                "exceptions": true,
+                "moduleLoad": true,
+                "trace": true
+            }
+        }
+    ]
+}
