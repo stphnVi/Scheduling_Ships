@@ -100,7 +100,7 @@ void CEmutex_init(CEmutex *mutex) {
         mutex->locked = 0; // Inicializar como desbloqueado
     }
 
-    printf("Mutex inicializado\n");
+    //printf("Mutex inicializado\n");
 }
 
 // LOCK: Bloquear el mutex
@@ -109,7 +109,7 @@ void CEmutex_lock(CEmutex *mutex) {
     while (__sync_lock_test_and_set(&(mutex->locked), 1)) {
         // Espera activa (busy waiting)
     }
-    printf("Mutex bloqueado. Estado de locked: %d\n", mutex->locked);
+    //printf("Mutex bloqueado. Estado de locked: %d\n", mutex->locked);
 }
 
 // UNLOCK: Desbloquear el mutex
@@ -117,13 +117,13 @@ void CEmutex_unlock(CEmutex *mutex) {
     if (mutex->locked) {
         __sync_lock_release(&(mutex->locked)); // Liberar el mutex
     }
-    printf("Mutex desbloqueado. Estado de locked: %d\n", mutex->locked);
+    //printf("Mutex desbloqueado. Estado de locked: %d\n", mutex->locked);
 }
 
 // DESTROY: Destruir el mutex
 void CEmutex_destroy(CEmutex *mutex) {
     if (mutex != NULL) {
         mutex->locked = -1; // Establecer como invalido
-        printf("Mutex destruido. Estado de locked: %d\n", mutex->locked);
+        //printf("Mutex destruido. Estado de locked: %d\n", mutex->locked);
     }
 }

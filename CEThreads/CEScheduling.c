@@ -27,6 +27,7 @@ void round_robin_scheduler()
 
         CEThread thread;
         CEThread_create(&thread, execute_task, current_task);
+        CEThread_run(&thread);
         CEThread_join(&thread); // Esperar a que el hilo termine
 
         // Si la tarea no ha terminado, agregarla al final de la lista
@@ -110,6 +111,7 @@ void fcfs_scheduler()
 
         CEThread thread;
         CEThread_create(&thread, execute_task, current_task);
+        CEThread_run(&thread);
         CEThread_join(&thread); // Esperar a que el hilo termine
 
         printf("Tarea %d completada.\n", current_task->task_id);
@@ -128,10 +130,10 @@ int main()
 
     // printf("Iniciando Round Robin Scheduler:\n");
     // round_robin_scheduler(); // Ejecutar Round Robin
-    // printf("Iniciando Fcfs:\n");
-    // fcfs_scheduler();
-    printf("Iniciando prioridad:\n");
-    execute_tasks_by_priority();
+    printf("Iniciando Fcfs:\n");
+    fcfs_scheduler();
+    // printf("Iniciando prioridad:\n");
+    // execute_tasks_by_priority();
 
     // Limpiar la lista destruir el mutex
     free_task_list();

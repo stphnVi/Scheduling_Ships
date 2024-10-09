@@ -128,10 +128,10 @@ int main()
 
     // printf("Iniciando Round Robin Scheduler:\n");
     // round_robin_scheduler(); // Ejecutar Round Robin
-    // printf("Iniciando Fcfs:\n");
-    // fcfs_scheduler();
-    printf("Iniciando prioridad:\n");
-    execute_tasks_by_priority();
+    printf("Iniciando Fcfs:\n");
+    fcfs_scheduler();
+    // printf("Iniciando prioridad:\n");
+    // execute_tasks_by_priority();
 
     // Limpiar la lista destruir el mutex
     free_task_list();
