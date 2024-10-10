@@ -1,13 +1,15 @@
+# Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -g -I./Structs  
+CFLAGS = -Wall -Wextra -g -I./Structs
 
-SRCS = Equity.c PassageLR.c PassageRL.c Setup.c main.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c Structs/NodeFactory.c ThreadsAdapter.c
+# Lista de archivos fuente
+SRCS = Equity.c PassageLR.c PassageRL.c Setup.c main.c ThreadsAdapter.c Tica.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c
 
-# Generar archivos objeto
+# Lista de archivos objeto
 OBJS = $(SRCS:.c=.o)
 
 # Nombre del ejecutable
-TARGET = my_program
+TARGET = Scheduling_Ships
 
 # Regla por defecto para construir el ejecutable
 all: $(TARGET)
@@ -16,10 +18,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Regla para compilar archivos fuente a archivos objeto
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 # Regla para limpiar los archivos generados
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) *.gch
+

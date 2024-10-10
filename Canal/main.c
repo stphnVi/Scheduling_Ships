@@ -1,3 +1,4 @@
+#include <BoatList.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -12,5 +13,6 @@ int main() {
     struct Canal canal = setup(2,'T', 2, 2, 2, 2);
 
     Tica(canal.right, canal.left, canal.nodes);
+    
     return 0;
 }

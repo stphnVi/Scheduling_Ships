@@ -1,0 +1,35 @@
+/home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/josue/Downloads/clion-2024.2.2/bin/ninja/linux/x64/ninja -DCMAKE_C_COMPILER=/lib/gcc -DCMAKE_CXX_COMPILER=/lib/gcc -G Ninja -S /home/josue/Desktop/Scheduling_Ships/Canal -B /home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug-system
+-- The C compiler identification is unknown
+-- The CXX compiler identification is unknown
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: /lib/gcc
+-- Check for working C compiler: /lib/gcc - broken
+CMake Error at /home/josue/Downloads/clion-2024.2.2/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:67 (message):
+  The C compiler
+
+    "/lib/gcc"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: '/home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug-system/CMakeFiles/CMakeScratch/TryCompile-BDG8tR'
+    
+    Run Build Command(s): /home/josue/Downloads/clion-2024.2.2/bin/ninja/linux/x64/ninja -v cmTC_1f3eb
+    [1/2] /lib/gcc    -o CMakeFiles/cmTC_1f3eb.dir/testCCompiler.c.o -c /home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug-system/CMakeFiles/CMakeScratch/TryCompile-BDG8tR/testCCompiler.c
+    FAILED: CMakeFiles/cmTC_1f3eb.dir/testCCompiler.c.o 
+    /lib/gcc    -o CMakeFiles/cmTC_1f3eb.dir/testCCompiler.c.o -c /home/josue/Desktop/Scheduling_Ships/Canal/cmake-build-debug-system/CMakeFiles/CMakeScratch/TryCompile-BDG8tR/testCCompiler.c
+    /bin/sh: 1: /lib/gcc: Permission denied
+    ninja: build stopped: subcommand failed.
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
