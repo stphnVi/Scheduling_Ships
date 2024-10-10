@@ -7,9 +7,8 @@
 #include <time.h>
 
 #define QUANTUM 1
-#define MAX_EXECUTION_TIME 1 // Tiempo máximo de ejecución en segundos
+#define MAX_EXECUTION_TIME 1
 
-// Definición de la estructura de las tareas
 typedef struct task
 {
     int task_id;
@@ -22,10 +21,9 @@ typedef struct task
 // Lista de tareas (cabeza de la lista enlazada)
 extern task_t *task_list;
 
-//  sincronización
+// sincronización
 extern pthread_mutex_t mutex;
 
-// Prototipos de las funciones
 void add_task(int task_id, int duration, int priority, int type);
 task_t *remove_task();
 void free_task_list();

@@ -77,7 +77,7 @@ void *execute_task(void *arg)
     task_t *task = (task_t *)arg;
     printf("Hilo ejecutando tarea con ID: %d por %d segundos\n", task->task_id, QUANTUM);
 
-    sleep(QUANTUM); // Simula ejecución por el quantum
+    // sleep(QUANTUM); // Simula ejecución por el quantum
     task->duration -= QUANTUM;
 
     blink_led(task);
@@ -136,7 +136,6 @@ int compare_SJF(const void *a, const void *b)
     return task_a->duration - task_b->duration;
 }
 
-// Función para ejecutar tareas en orden de prioridad
 void priSJF_scheduler(int a)
 {
     // Contar el número de tareas
@@ -167,14 +166,13 @@ void priSJF_scheduler(int a)
         qsort(tasks_array, count, sizeof(task_t *), compare_SJF);
     }
 
-    // Ejecutar las tareas en orden de prioridad
-    pthread_t threads[count]; // Array para los hilos
+    pthread_t threads[count];
     for (int i = 0; i < count; i++)
     {
         while (tasks_array[i]->duration > 0)
-        {                                                                    // Mientras haya duración restante
-            pthread_create(&threads[i], NULL, execute_task, tasks_array[i]); // Crear hilo para la tarea
-            pthread_join(threads[i], NULL);                                  // Esperar a que el hilo termine
+        {
+            pthread_create(&threads[i], NULL, execute_task, tasks_array[i]);
+            pthread_join(threads[i], NULL);
         }
     }
 
@@ -198,10 +196,10 @@ void fcfs_scheduler()
 
         pthread_t thread;
         pthread_create(&thread, NULL, execute_task, current_task);
-        pthread_join(thread, NULL); // Esperar a que el hilo termine
+        pthread_join(thread, NULL);
 
         printf("Tarea %d completada.\n", current_task->task_id);
-        free(current_task); // Liberar memoria de la tarea
+        free(current_task);
     }
 }
 
@@ -211,7 +209,7 @@ void fcfs_scheduler()
 // Comparador para ordenar las tareas según el deadline más cercano
 int edf_comparator(const struct timeval *deadline_a, const struct timeval *deadline_b)
 {
-    return timercmp(deadline_a, deadline_b, >); // Compara si deadline_a es mayor que deadline_b
+    return timercmp(deadline_a, deadline_b, >);
 }
 
 // Función para encontrar la tarea con el deadline más cercano
@@ -256,18 +254,15 @@ void *execute_with_time_limit(void *arg)
         // Crear un hilo para ejecutar la tarea
         pthread_t thread;
         pthread_create(&thread, NULL, execute_task, (void *)task);
-        pthread_join(thread, NULL); // Esperar que el hilo termine
+        pthread_join(thread, NULL);
 
-        total_execution_time += QUANTUM; // Incrementa el tiempo total de ejecución
-
+        total_execution_time += QUANTUM;
         // Si la tarea ya se completó, salimos del loop
         if (task->duration <= 0)
         {
             printf("Tarea con ID: %d completada\n", task->task_id);
             break;
         }
-
-        // Si excede el tiempo máximo, cortamos la ejecución
         if (total_execution_time >= MAX_EXECUTION_TIME)
         {
             printf("Tarea con ID: %d excedió el tiempo máximo de ejecución\n", task->task_id);
@@ -286,11 +281,10 @@ void edf_scheduler()
 
     while ((task = edf_find_earliest_deadline_task()) != NULL)
     {
-        // Crear un hilo para ejecutar la tarea con límite de tiempo
-        pthread_create(&thread, NULL, execute_with_time_limit, (void *)task);
-        pthread_join(thread, NULL); // Esperar que el hilo termine
 
-        // Remover la tarea de la lista después de que termine
+        pthread_create(&thread, NULL, execute_with_time_limit, (void *)task);
+        pthread_join(thread, NULL);
+
         task_t *removed_task = remove_task();
         free(removed_task);
     }
@@ -300,11 +294,12 @@ int main()
 {
     setup_leds();
     pthread_mutex_init(&mutex, NULL);
+    // a =1 prioridad a=? SJF
     int a = 0;
     // Agregar tareas a la lista
     add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2
     add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3
-    add_task(3, 4, 1, 0); // Tarea 3 con duración 4 y prioridad 1
+    add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1
 
     // printf("Iniciando Round Robin Scheduler:\n");
     // round_robin_scheduler(); // Ejecutar Round Robin
