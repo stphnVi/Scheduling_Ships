@@ -11,7 +11,6 @@ struct Boat{
     char type;
     char direction;
     short position;
-    struct Boat* next;
 };
 
 short move_boat(struct Node* node, struct Boat* boat);

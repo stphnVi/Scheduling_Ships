@@ -1,85 +1,61 @@
+#include <NodeList.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <semaphore.h>
 #include "Passage.h"
 #include "Structs/BoatList.h"
 
 void Tica(struct BoatList *right, struct BoatList *left, struct NodeList *list) {
-    pthread_t threads[right->count];
-    struct ThreadData thread_data[right->count];
-
-    int thread_count = 0;
+    pthread_t *thread_list = (pthread_t*) malloc(MAX_BOATS * sizeof(pthread_t));
+    struct ThreadData *thread_data_list = (struct ThreadData*) malloc(MAX_BOATS * sizeof(struct ThreadData));
+    int counterR = 0;
+    int counterL = 0;
 
     if (right->boats[0].priority > left->boats[0].priority) {
-        for (int i = 0; i < right->count && thread_count < right->count; i++) {
-            thread_data[thread_count].boat = &right->boats[i];
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionR, (void*) &thread_data[thread_count]);
-            thread_count++;
+        while (counterR < right->count) {
+            if (list->head->available == 1) {
+                thread_data_list[counterR].boat = &right->boats[counterR];
+                thread_data_list[counterR].list = list;
+                pthread_create(&thread_list[counterR], NULL, thread_functionR, (void*)&thread_data_list[counterR]);
+                counterR++;
+            }
         }
-
-        // Esperar que todos los hilos terminen
-        for (int i = 0; i < thread_count; i++) {
-            pthread_join(threads[i], NULL);
+        for (int i = 0; i < right->count; i++) {
+            pthread_join(thread_list[i], NULL);
         }
-
-        for (int i = 0; i < left->count && thread_count < left->count; i++) {
-            thread_data[thread_count].boat = &left->boats[i];
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionL, (void*) &thread_data[thread_count]);
-            thread_count++;
+        while (counterL < left->count) {
+            if (list->head->available == 1) {
+                thread_data_list[counterL].boat = &left->boats[counterL];
+                thread_data_list[counterL].list = list;
+                pthread_create(&thread_list[counterL], NULL, thread_functionL, (void*)&thread_data_list[counterL]);
+                counterL++;
+            }
         }
-
-    } else if (right->boats[0].priority < left->boats[0].priority) {
-        for (int i = 0; i < left->count && thread_count < left->count; i++) {
-            thread_data[thread_count].boat = &left->boats[i];  // Apunta al barco en la lista
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionL, (void*) &thread_data[thread_count]);
-            thread_count++;
-        }
-
-        // Esperar que todos los hilos terminen
-        for (int i = 0; i < thread_count; i++) {
-            pthread_join(threads[i], NULL);
-        }
-
-        for (int i = 0; i < right->count && thread_count < right->count; i++) {
-            thread_data[thread_count].boat = &right->boats[i];  // Apunta al barco en la lista
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionR, (void*) &thread_data[thread_count]);
-            thread_count++;
-        }
-
     } else {
-        for (int i = 0; i < right->count && thread_count < right->count; i++) {
-            thread_data[thread_count].boat = &right->boats[i];  // Apunta al barco en la lista
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionR, (void*) &thread_data[thread_count]);
-            thread_count++;
+        while (counterL < left->count) {
+            if (list->head->available == 1) {
+                thread_data_list[counterL].boat = &left->boats[counterL];
+                thread_data_list[counterL].list = list;
+                pthread_create(&thread_list[counterL], NULL, thread_functionL, (void*)&thread_data_list[counterL]);
+                counterL++;
+            }
         }
-        // Esperar que todos los hilos terminen
-        for (int i = 0; i < thread_count; i++) {
-            pthread_join(threads[i], NULL);
+        for (int i = 0; i < left->count; i++) {
+            pthread_join(thread_list[i], NULL);
         }
-
-        for (int i = 0; i < left->count && thread_count < left->count; i++) {
-            thread_data[thread_count].boat = &left->boats[i];  // Apunta al barco en la lista
-            thread_data[thread_count].list = list;
-
-            pthread_create(&threads[thread_count], NULL, thread_functionL, (void*) &thread_data[thread_count]);
-            thread_count++;
+        while (counterR < right->count) {
+            if (list->head->available == 1) {
+                thread_data_list[counterR].boat = &right->boats[counterR];
+                thread_data_list[counterR].list = list;
+                pthread_create(&thread_list[counterR], NULL, thread_functionR, (void*)&thread_data_list[counterR]);
+                counterR++;
+            }
         }
     }
 
-    // Esperar que todos los hilos terminen
-    for (int i = 0; i < thread_count; i++) {
-        pthread_join(threads[i], NULL);
-    }
+    free(thread_list);
+    free(thread_data_list);
 }
+
+

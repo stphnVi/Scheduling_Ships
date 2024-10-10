@@ -13,13 +13,9 @@ void addBoatToList(struct BoatList* list, struct Boat boat) {
     }
 
     list->boats[list->count] = boat;
-    list->boats[list->count].next = NULL;
-
-    if (list->count > 0) {
-        list->boats[list->count - 1].next = &list->boats[list->count];
-    }
 
     list->count++;
+
 }
 
 

@@ -3,7 +3,8 @@
 
 #include "Boat.h"
 
-#define MAX_BOATS 15
+#define MAX_BOATS 9
+
 
 struct BoatList {
     struct Boat boats[MAX_BOATS];

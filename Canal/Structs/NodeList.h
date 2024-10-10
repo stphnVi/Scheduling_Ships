@@ -3,7 +3,7 @@
 
 #include "Node.h"
 
-#define MAX_NODES 10
+#define MAX_NODES 5
 
 struct NodeList {
     struct Node* head;
