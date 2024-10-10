@@ -2,7 +2,14 @@
     "files.associations": {
         "boat.h": "c",
         "pthread.h": "c",
-        "semaphore.h": "c"
+        "semaphore.h": "c",
+        "boatlist.h": "c",
+        "stdio.h": "c",
+        "control.h": "c",
+        "passage.h": "c",
+        "unistd.h": "c",
+        "nodelist.h": "c",
+        "stdlib.h": "c"
     },
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/Structs",

@@ -1,9 +1,10 @@
 # Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -g -I./Structs
+CFLAGS = -Wall -Wextra -g -I./Structs 
+CFLAGS = -Wall -Wextra -g -I./Control 
 
 # Lista de archivos fuente
-SRCS = Equity.c PassageLR.c PassageRL.c Setup.c main.c ThreadsAdapter.c Tica.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c
+SRCS = Control/Equity.c Control/PassageLR.c Control/PassageRL.c Control/Setup.c Control/main.c Control/ThreadsAdapter.c Control/Tica.c Structs/NodeList.c Structs/Boat.c Structs/BoatList.c Structs/BoatFactory.c
 
 # Lista de archivos objeto
 OBJS = $(SRCS:.c=.o)

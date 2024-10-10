@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Structs/Canal.h"
-#include "Structs/BoatFactory.h"
-#include "Structs/Node.h"
-#include "Structs/NodeList.h"
-#include "Structs/Boat.h"
-#include "Structs/BoatList.h"
+#include "../Structs/Canal.h"
+#include "../Structs/BoatFactory.h"
+#include "../Structs/Node.h"
+#include "../Structs/NodeList.h"
+#include "../Structs/Boat.h"
+#include "../Structs/BoatList.h"
 
 
 struct Canal setup(int length, char mode, short speed, short w, short time , int quantity) {

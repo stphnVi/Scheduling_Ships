@@ -4,10 +4,10 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include "Passage.h"
-#include "Structs/Boat.h"
-#include "Structs/Node.h"
-#include "Structs/NodeList.h"
-#include "Structs/BoatList.h"
+#include "../Structs/Boat.h"
+#include "../Structs/Node.h"
+#include "../Structs/NodeList.h"
+#include "../Structs/BoatList.h"
 
 void Equity(int W, char direction, struct BoatList *right, struct BoatList *left, struct NodeList *list) {
     pthread_t *threads = malloc(W * sizeof(pthread_t));

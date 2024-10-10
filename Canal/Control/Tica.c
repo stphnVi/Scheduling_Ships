@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include "Structs/NodeList.h"
+#include "../Structs/NodeList.h"
 #include "Passage.h"
-#include "Structs/BoatList.h"
+#include "../Structs/BoatList.h"
 
 void Tica(struct BoatList *right, struct BoatList *left, struct NodeList *list) {
     pthread_t *thread_list = (pthread_t*) malloc(MAX_BOATS * sizeof(pthread_t));
