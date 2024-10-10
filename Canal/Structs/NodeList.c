@@ -12,30 +12,49 @@ void initNodeList(struct NodeList* list) {
 }
 
 struct Node* create_node(short id) {
-    if (currentIndex >= MAX_NODES) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
         return NULL;
     }
 
-    struct Node* newNode = &nodePool[currentIndex];
     newNode->id = id;
     newNode->available = 1;
     newNode->next = NULL;
     newNode->prev = NULL;
 
-    currentIndex++;
     return newNode;
 }
 
-
 void appendNode(struct NodeList* list, struct Node* node) {
-    node->next = NULL;
-    node->prev = list->tail;
+    if (list == NULL || node == NULL) {
+        printf("Error: la lista o el nodo es NULL.\n");
+        return;
+    }
+
+    node->next = NULL; 
+    node->prev = list->tail; 
 
     if (list->tail != NULL) {
         list->tail->next = node;
     } else {
+
         list->head = node;
     }
 
     list->tail = node;
+}
+
+
+void freeNodeList(struct NodeList* list) {
+    struct Node* current = list->head;
+    struct Node* next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current); 
+        current = next;
+    }
+
+    list->head = NULL;
+    list->tail = NULL;
 }
