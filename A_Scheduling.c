@@ -75,7 +75,7 @@ void free_task_list()
 void *execute_task(void *arg)
 {
     task_t *task = (task_t *)arg;
-    printf("Hilo ejecutando tarea con ID: %d por %d segundos\n", task->task_id, QUANTUM);
+    printf("Hilo ejecutando tarea con tipo: %d por %d segundos y su ID: %d \n", task->type, QUANTUM, task->task_id);
 
     // sleep(QUANTUM); // Simula ejecución por el quantum
     task->duration -= QUANTUM;
@@ -297,19 +297,19 @@ int main()
     // a =1 prioridad a=? SJF
     int a = 0;
     // Agregar tareas a la lista
-    add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2
-    add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3
-    add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1
+    add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2 de tipo 1
+    add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3 de tipo 2
+    add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1 de tipo 1
 
     // printf("Iniciando Round Robin Scheduler:\n");
-    // round_robin_scheduler(); // Ejecutar Round Robin
+    printf("Iniciando round robin:\n");
+    round_robin_scheduler(); // Ejecutar Round Robin
     // printf("Iniciando Fcfs:\n");
     // fcfs_scheduler();
     // printf("Iniciando prioridad:\n");
 
-    printf("Iniciando SJF:\n");
-    priSJF_scheduler(a);
-    // edf_scheduler(a);
+    // priSJF_scheduler(a);
+    //  edf_scheduler(a);
 
     // Limpiar la lista destruir el mutex
     free_task_list();

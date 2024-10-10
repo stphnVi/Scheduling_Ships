@@ -44,78 +44,45 @@ void set_led_color(int led_index, int task_type)
     }
 }
 
+int led_colors[3] = {0, 0, 0}; // Colores de los 3 LEDs
+
 void animate_leds(task_t *task, int delay_time)
 {
-    int led_colors[3] = {0}; // Arreglo para almacenar el tipo de tarea en cada LED
-    int next_led_colors[3];
+    int current_task_color = task->type; // Color de la tarea actual
 
-    task_t *current_task = task;
-    int num_tasks = 0;
-
-    while (current_task != NULL)
+    // Desplazar los colores de los leds
+    for (int i = 2; i > 0; i--)
     {
-        num_tasks++;
-        current_task = current_task->next;
+        led_colors[i] = led_colors[i - 1]; // Desplazar el estado de los LEDs
     }
 
-    // Apagar todos los LEDs inicialmente
+    // Asignar la nueva tarea al primer LED
+    led_colors[0] = current_task_color;
+
+    // Mostrar el estado actual de los LEDs
     for (int i = 0; i < 3; i++)
     {
-        led_colors[i] = 0;
-        set_led_color(i, led_colors[i]); // Asegurar que todos estén apagados
+        set_led_color(i, led_colors[i]);
     }
 
-    // Animar el desplazamiento de las tareas
-    for (int step = 0; step < num_tasks + 3; step++)
-    {
-        delay(delay_time);
-
-        // Copiar los colores actuales a un nuevo arreglo
-        for (int i = 0; i < 3; i++)
-        {
-            next_led_colors[i] = led_colors[i];
-        }
-
-        // Desplazar los valores de los LEDs hacia la derecha
-        for (int i = 2; i > 0; i--)
-        {
-            next_led_colors[i] = led_colors[i - 1];
-        }
-
-        // Asignar una nueva tarea al primer LED
-        if (step < num_tasks)
-        {
-            next_led_colors[0] = task->type;
-            task = task->next;
-        }
-        else
-        {
-            next_led_colors[0] = 0;
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            led_colors[i] = next_led_colors[i];
-            set_led_color(i, led_colors[i]);
-        }
-    }
-
-    printf("Animación completada para las tareas\n");
+    delay(delay_time);
 }
 
 void blink_led(task_t *task)
 {
     task_t *current_task = task;
 
-    printf("Lista de tareas:\n");
+    // printf("Lista de tareas leds:\n");
 
+    printf("Task type: %d\n", task->type);
     while (current_task != NULL)
     {
 
-        printf("Tarea ID: %d, Tipo: %d\n", current_task->task_id, current_task->type);
+        // printf("Tarea ID: %d, Tipo: %d\n", current_task->task_id, current_task->type);
 
         // Avanzar a la siguiente tarea
         current_task = current_task->next;
     }
+
     animate_leds(task, 1000);
 }
