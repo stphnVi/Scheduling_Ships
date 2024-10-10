@@ -24,21 +24,21 @@ struct Canal setup(int length, char mode, short speed, short w, short time , int
         appendNode(&node_list, create_node(i));
         i++;
     }
-    struct BoatList west;
-    initBoatList(&west);
+    struct BoatList* west = createBoatList();
+    initBoatList(west);
     while (left < quantity) {
-        addBoatToList(&west, createBoat(COMMON,'L', speed));
+        addBoatToList(west, createBoat(COMMON,'L', speed));
         left++;
     }
-    struct BoatList east;
-    initBoatList(&east);
+    struct BoatList* east = createBoatList();
+    initBoatList(east);
     while (right < quantity) {
-        addBoatToList(&east, createBoat(COMMON,'R', speed));
+        addBoatToList(east, createBoat(COMMON,'R', speed));
         right++;
     }
 
-    canal.left = &west;
-    canal.right = &east;
+    canal.left = west;
+    canal.right = east;
     canal.nodes = &node_list;
 
     return canal;

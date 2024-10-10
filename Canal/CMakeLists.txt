@@ -1,31 +1,31 @@
-# Versión mínima requerida de CMake
 cmake_minimum_required(VERSION 3.10)
 
 # Nombre del proyecto
-project(Scheduling_Ships)
+project(SchedulingShips)
 
-# Establecer la versión del estándar de C
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED True)
+# Establecer el estándar de C
+set(CMAKE_C_STANDARD 99)
 
-# Activar todas las advertencias importantes
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -g")
-
-# Incluir directorio con headers
-include_directories(./Structs)
-
-# Archivos fuente
-add_executable(Scheduling_Ships
-    Canal.c
-    Equity.c 
-    main.c 
-    PassageLR.c 
-    PassageRL.c 
-    Setup.c 
+# Agregar todas las fuentes necesarias
+set(SOURCES
+    Equity.c
+    PassageLR.c
+    PassageRL.c
+    Setup.c
+    main.c
+    Structs/NodeList.c
+    Structs/Boat.c
+    Structs/BoatList.c
+    Structs/BoatFactory.c
     ThreadsAdapter.c
     Tica.c
-    BoatFactory.c 
-    BoatList.c 
-    NodeList.c 
-
+    thread_functionR.c
+    thread_functionL.c
 )
+
+# Incluir directorios de cabeceras si tienes un directorio para ello
+include_directories(Structs)
+
+# Crear el ejecutable
+add_executable(Scheduling_Ships ${SOURCES})
+
