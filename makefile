@@ -1,8 +1,21 @@
 CC = gcc              
 CFLAGS = -Wall -pthread 
+CFLAGS += -Wall -Wextra -g -I.Canal/Structs 
+CFLAGS += -Wall -Wextra -g -I.Canal/Control 
 
 # Archivos fuente
-SRCS_SCHEDULER = A_Scheduling.c   # Archivos fuente de scheduling
+SRCS_SCHEDULER = A_Scheduling.c \
+                 Canal/Control/Equity.c \
+                 Canal/Control/PassageLR.c \
+                 Canal/Control/PassageRL.c \
+                 Canal/Control/Setup.c \
+                 Canal/Control/ThreadsAdapter.c \
+                 Canal/Control/Tica.c \
+                 Canal/Structs/NodeList.c \
+                 Canal/Structs/Boat.c \
+                 Canal/Structs/BoatList.c \
+                 Canal/Structs/BoatFactory.c  # Archivos fuente de scheduling
+
 SRCS_INTERFACE = interfaceRasp.c  # Archivo fuente para interfaceRasp
 
 # Archivos objeto
@@ -20,14 +33,9 @@ $(EXEC): $(OBJS_SCHEDULER) $(OBJS_INTERFACE)
 	$(CC) $(CFLAGS) -o $@ $(OBJS_SCHEDULER) $(OBJS_INTERFACE) -lwiringPi  # Enlazar los archivos de interfaceRasp con wiringPi
 
 # Regla para compilar A_Scheduling sin wiringPi
-$(OBJS_SCHEDULER): %.o: %.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-# Regla para compilar interfaceRasp con wiringPi
-$(OBJS_INTERFACE): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -lwiringPi
 
 # Limpiar los archivos generados
 clean:
 	rm -f $(OBJS_SCHEDULER) $(OBJS_INTERFACE) $(EXEC)
-
