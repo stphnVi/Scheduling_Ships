@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/josue/Desktop/Scheduling_Ships/Canal",
+            "binaryPath": "/home/josue/Desktop/Scheduling_Ships/Canal/Scheduling_Ships",
+            "binaryArgs": []
+        }
+    ]
+}

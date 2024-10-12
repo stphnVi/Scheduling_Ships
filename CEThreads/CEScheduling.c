@@ -194,10 +194,10 @@ int main()
     add_task(3, 4, 1,2); // Tarea 3 con duración 4 y prioridad 1 y boat ID Pesquero
     add_task(4, 2, 3,1); // Tarea 4 con duración 4 y prioridad 1 y boat ID Cargo
     add_task(5, 4, 1,1); // Tarea 5 con duración 4 y prioridad 1 y boat ID Cargo
-   printf("Iniciando Round Robin Scheduler:\n");
-   round_robin_scheduler(); // Ejecutar Round Robin
-    //printf("Iniciando Fcfs:\n");
-    //fcfs_scheduler();
+    //printf("Iniciando Round Robin Scheduler:\n");
+    //round_robin_scheduler(); // Ejecutar Round Robin
+    printf("Iniciando Fcfs:\n");
+    fcfs_scheduler();
     //printf("Iniciando prioridad:\n");
     //execute_tasks_by_priority();
 
