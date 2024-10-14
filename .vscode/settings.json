@@ -10,7 +10,8 @@
         "unistd.h": "c",
         "nodelist.h": "c",
         "stdlib.h": "c",
-        "setup.h": "c"
+        "setup.h": "c",
+        "canal.h": "c"
     },
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/Structs",

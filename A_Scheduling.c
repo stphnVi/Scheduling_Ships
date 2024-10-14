@@ -294,7 +294,16 @@ struct FileData {
     int largo;     
     int cantidadBarcos;
     char scheduling; 
+    int velocidad;
 };
+
+struct FileData leerArchivo() {
+
+    FILE *archivo = fopen('Config.txt', "r");
+    struct FileData data;
+    fscanf(archivo, "%d %d %d %d %d %d", &data.control ,&data.W, &data.tiempo, &data.largo, &data.cantidadBarcos, &data.scheduling, &data.velocidad);
+    return data;
+}
 
 int main()
 {
@@ -304,19 +313,19 @@ int main()
     // a =1 prioridad a=? SJF
     int a = 0;
 
-    
-
-    struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
+    struct FileData data = leerArchivo(); 
+    //int length, char mode, short speed, short w, short time , int quantity
+    struct Canal canal = setup(data.largo, data.control , data.velocidad, data.W, data.tiempo, data.cantidadBarcos);
     Equity(1,canal.right, canal.left, 2);
     switch (canal.control) {
         case 'T':
-            Tica(canal.right, canal.left, 3);
+            Tica(canal.right, canal.left, data.largo);
             break;
         case 'E':
-            Equity(3, canal.right, canal.left, 3);
+            Equity(canal.w, canal.right, canal.left, data.largo);
             break;
         case 'C':
-            TimedEquity(3, canal.right, canal.left, 3);
+            TimedEquity(canal.time, canal.right, canal.left, data.largo);
             break;
         default:
             printf("Dato no válido: %d\n");
