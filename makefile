@@ -1,5 +1,4 @@
 CC = gcc              
-CFLAGS = -Wall -pthread 
 CFLAGS += -Wall -Wextra -g -I.Canal/Structs 
 CFLAGS += -Wall -Wextra -g -I.Canal/Control 
 

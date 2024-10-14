@@ -6,16 +6,17 @@
 #include "Canal/Structs/BoatList.h"
 #include "Canal/Structs/NodeList.h"
 #include "Canal/Control/Control.h"
-#include <sys/time.h> // Para gettimeofday
-#include <time.h>     // Para time
+#include "CEThreads/CEThreads.c"
+#include <sys/time.h> 
+#include <time.h>     
 
 task_t *task_list = NULL;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+struct CEmutex mutex;
 
 // Implementación: agregar
 void add_task(int task_id, int duration, int priority, int type)
 {
-    pthread_mutex_lock(&mutex);
+    CEmutex_lock(&mutex);
 
     task_t *new_task = malloc(sizeof(task_t));
     new_task->task_id = task_id;
@@ -38,24 +39,24 @@ void add_task(int task_id, int duration, int priority, int type)
         temp->next = new_task;
     }
 
-    pthread_mutex_unlock(&mutex);
+    CEmutex_unlock(&mutex);
 }
 
 // Implementación: remover la primera tarea de la lista
 task_t *remove_task()
 {
-    pthread_mutex_lock(&mutex);
+    CEmutex_lock(&mutex);
 
     if (task_list == NULL)
     {
-        pthread_mutex_unlock(&mutex);
+        CEmutex_unlock(&mutex);
         return NULL;
     }
 
     task_t *task_to_remove = task_list;
     task_list = task_list->next;
 
-    pthread_mutex_unlock(&mutex);
+    CEmutex_unlock(&mutex);
 
     return task_to_remove;
 }
@@ -63,7 +64,7 @@ task_t *remove_task()
 // Función para liberar memoria
 void free_task_list()
 {
-    pthread_mutex_lock(&mutex);
+    CEmutex_lock(&mutex);
 
     task_t *temp;
     while (task_list != NULL)
@@ -73,21 +74,12 @@ void free_task_list()
         free(temp);
     }
 
-    pthread_mutex_unlock(&mutex);
+    CEmutex_unlock(&mutex);
 }
 
 // Función que ejecuta una tarea (simulación) POSIBLEMENTE HAYA QUE CAMBIAR LA LECTURA DEL QUANTUM
 void *execute_task(void *arg)
 {
-    task_t *task = (task_t *)arg;
-    printf("Hilo ejecutando tarea con tipo: %d por %d segundos y su ID: %d \n", task->type, QUANTUM, task->task_id);
-
-    // sleep(QUANTUM); // Simula ejecución por el quantum
-    task->duration -= QUANTUM;
-
-    blink_led(task);
-
-    pthread_exit(NULL);
 }
 
 //                                                                 _________________________________________
@@ -104,9 +96,10 @@ void round_robin_scheduler()
             break;
         }
 
-        pthread_t thread;
-        pthread_create(&thread, NULL, execute_task, current_task);
-        pthread_join(thread, NULL); // Esperar a que el hilo termine
+        CEThread thread;
+        CEThread_create(&thread, execute_task, current_task);
+        CEThread_run(&thread);
+        CEThread_join(&thread); // Esperar a que el hilo termine
 
         // Si la tarea no ha terminado, agregarla al final de la lista
         if (current_task->duration > 0)
@@ -141,7 +134,7 @@ int compare_SJF(const void *a, const void *b)
     return task_a->duration - task_b->duration;
 }
 
-void priSJF_scheduler(int a)
+void execute_tasks_by_priority()
 {
     // Contar el número de tareas
     int count = 0;
@@ -161,23 +154,18 @@ void priSJF_scheduler(int a)
         temp = temp->next;
     }
 
-    if (a == 1)
-    {
-        // Ordenar el arreglo por prioridad
-        qsort(tasks_array, count, sizeof(task_t *), compare_priority);
-    }
-    else // Ordenar el arreglo por tiempo
-    {
-        qsort(tasks_array, count, sizeof(task_t *), compare_SJF);
-    }
+    // Ordenar el arreglo por prioridad
+    qsort(tasks_array, count, sizeof(task_t *), compare_SJF);
 
-    pthread_t threads[count];
+    // Ejecutar las tareas en orden de prioridad
+    CEThread threads[count]; // Array para los hilos
     for (int i = 0; i < count; i++)
     {
         while (tasks_array[i]->duration > 0)
-        {
-            pthread_create(&threads[i], NULL, execute_task, tasks_array[i]);
-            pthread_join(threads[i], NULL);
+        {                                                                    // Mientras haya duración restante
+            CEThread_create(&threads[i], execute_task, tasks_array[i]); // Crear hilo para la tarea
+            CEThread_run(&threads[i]);
+            CEThread_join(&threads[i]);                                  // Esperar a que el hilo termine
         }
     }
 
@@ -199,12 +187,13 @@ void fcfs_scheduler()
             break;
         }
 
-        pthread_t thread;
-        pthread_create(&thread, NULL, execute_task, current_task);
-        pthread_join(thread, NULL);
+        CEThread thread;
+        CEThread_create(&thread, execute_task, current_task);
+        CEThread_run(&thread);
+        CEThread_join(&thread); // Esperar a que el hilo termine
 
         printf("Tarea %d completada.\n", current_task->task_id);
-        free(current_task);
+        free(current_task); // Liberar memoria de la tarea
     }
 }
 
@@ -220,11 +209,11 @@ int edf_comparator(const struct timeval *deadline_a, const struct timeval *deadl
 // Función para encontrar la tarea con el deadline más cercano
 task_t *edf_find_earliest_deadline_task()
 {
-    pthread_mutex_lock(&mutex);
+    CEmutex_lock(&mutex);
 
     if (task_list == NULL)
     {
-        pthread_mutex_unlock(&mutex);
+        CEmutex_unlock(&mutex);
         return NULL;
     }
 
@@ -244,7 +233,7 @@ task_t *edf_find_earliest_deadline_task()
         temp = temp->next;
     }
 
-    pthread_mutex_unlock(&mutex);
+    CEmutex_unlock(&mutex);
     return earliest_task;
 }
 
@@ -257,9 +246,10 @@ void *execute_with_time_limit(void *arg)
     while (task->duration > 0 && total_execution_time < MAX_EXECUTION_TIME)
     {
         // Crear un hilo para ejecutar la tarea
-        pthread_t thread;
-        pthread_create(&thread, NULL, execute_task, (void *)task);
-        pthread_join(thread, NULL);
+        CEThread thread;
+        CEThread_create(&thread, execute_task, task);
+        CEThread_run(&thread);
+        CEThread_join(&thread); // Esperar a que el hilo termine  
 
         total_execution_time += QUANTUM;
         // Si la tarea ya se completó, salimos del loop
@@ -287,43 +277,50 @@ void edf_scheduler()
     while ((task = edf_find_earliest_deadline_task()) != NULL)
     {
 
-        pthread_create(&thread, NULL, execute_with_time_limit, (void *)task);
-        pthread_join(thread, NULL);
+        CEThread thread;
+        CEThread_create(&thread, execute_task, task);
+        CEThread_run(&thread);
+        CEThread_join(&thread); // Esperar a que el hilo termine  
 
         task_t *removed_task = remove_task();
         free(removed_task);
     }
 }
 
+struct FileData {
+    char control;
+    int W;         
+    int tiempo;    
+    int largo;     
+    int cantidadBarcos;
+    char scheduling; 
+};
+
 int main()
 {
-    //setup_leds();
-    //pthread_mutex_init(&mutex, NULL);
+    setup_leds();
+    CEmutex_init(&mutex);
+    CEmutex_unlock(&mutex);
     // a =1 prioridad a=? SJF
-    //int a = 0;
+    int a = 0;
+
+    
 
     struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
     Equity(1,canal.right, canal.left, 2);
-
-    // Agregar tareas a la lista
-    //add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2 de tipo 1
-    //add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3 de tipo 2
-    //add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1 de tipo 3
-
-    // printf("Iniciando Round Robin Scheduler:\n");
-    //printf("Iniciando round robin:\n");
-    //round_robin_scheduler(); // Ejecutar Round Robin
-    // printf("Iniciando Fcfs:\n");
-    // fcfs_scheduler();
-    // printf("Iniciando prioridad:\n");
-
-    // priSJF_scheduler(a);
-    //  edf_scheduler(a);
-
-    // Limpiar la lista destruir el mutex
-    //free_task_list();
-    //pthread_mutex_destroy(&mutex);
-
+    switch (canal.control) {
+        case 'T':
+            Tica(canal.right, canal.left, 3);
+            break;
+        case 'E':
+            Equity(3, canal.right, canal.left, 3);
+            break;
+        case 'C':
+            TimedEquity(3, canal.right, canal.left, 3);
+            break;
+        default:
+            printf("Dato no válido: %d\n");
+    }
     return 0;
 }
 
