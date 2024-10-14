@@ -50,4 +50,3 @@ void Equity(int W, struct BoatList *right, struct BoatList *left, int length) {
     free(thread_list);
     free(thread_data_list);
 }
-}
