@@ -6,11 +6,12 @@
 #include "Node.h"
 
 struct Boat{
-    short priority;
-    short velocity;
-    char type;
+    int id;
+    int priority;
+    int velocity;
+    int type;
     char direction;
-    short position;
+    int position;
 };
 
 short move_boat(struct Node* node, struct Boat* boat);

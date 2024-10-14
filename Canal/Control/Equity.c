@@ -9,46 +9,45 @@
 #include "../Structs/NodeList.h"
 #include "../Structs/BoatList.h"
 
-void Equity(int W, char direction, struct BoatList *right, struct BoatList *left, struct NodeList *list) {
-    pthread_t *threads = malloc(W * sizeof(pthread_t));
-    struct ThreadData **thread_data = malloc(W * sizeof(struct ThreadData*));
+void Equity(int W, struct BoatList *right, struct BoatList *left, int length) {
 
-    if(direction == 'R') {
-        if (right != NULL) {
-            for (int i = 0; i < W; i++) {
-                thread_data[i] = (struct ThreadData*) malloc(sizeof(struct ThreadData));
-                thread_data[i]->boat = getHead(right);
-                thread_data[i]->list = list;
-                deleteHead(right);
-                
-                pthread_create(&threads[i], NULL, thread_functionR, (void*) thread_data[i]);
-            }
+    int i = 1;
+    struct NodeList list;
+    initNodeList(&list);
+    while (i < length + 1) {
+        appendNode(&list, create_node(i));
+        i++;
+    }
 
-            for (int i = 0; i < W; i++) {
-                pthread_join(threads[i], NULL);
-                free(thread_data[i]);
-            }
-        } else {
-            Equity(W, 'L', right, left, list);
-        }
-    } else if (direction == 'L') {
-        if (left != NULL) {
-            for (int i = 0; i < W; i++) {
-                thread_data[i] = (struct ThreadData*) malloc(sizeof(struct ThreadData));
-                thread_data[i]->boat = getHead(left);
-                thread_data[i]->list = list;
-                deleteHead(left);
+    pthread_t *thread_list = (pthread_t*) malloc(MAX_BOATS * sizeof(pthread_t));
+    struct ThreadData *thread_data_list = (struct ThreadData*) malloc(MAX_BOATS * sizeof(struct ThreadData));
 
-                pthread_create(&threads[i], NULL, thread_functionL, (void*) thread_data[i]);
+    while (right->count != 0 && left->count !=0) {
+        if(i == 0){
+            for (int a = 0; a <= W; a++) {
+                if (list.tail->available == 1 & left->count !=0)  {
+                    printf("Count of boats in west: %d\n", a);
+                    thread_data_list[0].boat = &left->boats[0];
+                    thread_data_list[0].list = &list;
+                    pthread_create(&thread_list[0], NULL, thread_functionL, (void*)&thread_data_list[0]);
+                    deleteHead(left);
+                }
             }
-            for (int i = 0; i < W; i++) {
-                pthread_join(threads[i], NULL);
-                free(thread_data[i]);
+            i = 1;
+        }else{
+            for (int b = 0; b <= W; b++) {
+                if (list.head->available == 1 & right->count != 0) {
+                    printf("Count of boats in EAST: %d\n", b);
+                    thread_data_list[0].boat = &right->boats[0];
+                    thread_data_list[0].list = &list;
+                    pthread_create(&thread_list[0], NULL, thread_functionR, (void*)&thread_data_list[0]);
+                    deleteHead(right);
+                }
             }
-        } else {
-            Equity(W, 'R', right, left, list);
+            i = 0;
         }
     }
-    free(threads);
-    free(thread_data);
+    free(thread_list);
+    free(thread_data_list);
+}
 }

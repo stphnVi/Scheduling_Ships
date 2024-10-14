@@ -10,6 +10,7 @@ void passageRL(struct Boat *boat, struct NodeList *list) {
     while (current != NULL) {
         short check_movement = move_boat(current, boat);
         if (check_movement == 1) {
+            current.available = 1;
             current = current->next;
             sleep(boat->velocity);
         }else {

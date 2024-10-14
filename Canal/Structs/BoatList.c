@@ -22,6 +22,7 @@ void initBoatList(struct BoatList* list) {
     for (int i = 0; i < MAX_BOATS; i++) {
         list->boats[i].priority = 0;
         list->boats[i].velocity = 0;
+        list->boats[i].id = i;
         list->boats[i].type = 0;
         list->boats[i].direction = 0;
         list->boats[i].position = 0;
@@ -56,7 +57,7 @@ void deleteHead(struct BoatList* list) {
     }
 
     list->count--;
-}
+} 
 
 void destroyBoatList(struct BoatList* list) {
     if (list != NULL) {

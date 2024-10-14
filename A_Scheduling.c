@@ -1,6 +1,8 @@
 #include "scheduling.h"
 #include "interfaceRasp.h"
 #include <unistd.h>
+#include "Canal/Control/Setup.h"
+#include "Canal/Structs/Canal.h"
 #include <sys/time.h> // Para gettimeofday
 #include <time.h>     // Para time
 
@@ -292,18 +294,21 @@ void edf_scheduler()
 
 int main()
 {
-    setup_leds();
-    pthread_mutex_init(&mutex, NULL);
+    //setup_leds();
+    //pthread_mutex_init(&mutex, NULL);
     // a =1 prioridad a=? SJF
-    int a = 0;
+    //int a = 0;
+
+    struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
+
     // Agregar tareas a la lista
-    add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2 de tipo 1
-    add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3 de tipo 2
-    add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1 de tipo 1
+    //add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2 de tipo 1
+    //add_task(2, 1, 3, 2); // Tarea 2 con duración 1 y prioridad 3 de tipo 2
+    //add_task(3, 4, 1, 3); // Tarea 3 con duración 4 y prioridad 1 de tipo 3
 
     // printf("Iniciando Round Robin Scheduler:\n");
-    printf("Iniciando round robin:\n");
-    round_robin_scheduler(); // Ejecutar Round Robin
+    //printf("Iniciando round robin:\n");
+    //round_robin_scheduler(); // Ejecutar Round Robin
     // printf("Iniciando Fcfs:\n");
     // fcfs_scheduler();
     // printf("Iniciando prioridad:\n");
@@ -312,8 +317,14 @@ int main()
     //  edf_scheduler(a);
 
     // Limpiar la lista destruir el mutex
-    free_task_list();
-    pthread_mutex_destroy(&mutex);
+    //free_task_list();
+    //pthread_mutex_destroy(&mutex);
 
     return 0;
+}
+
+void prueba(){
+    
+    struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
+
 }
