@@ -191,8 +191,8 @@ int main()
     // Agregar tareas a la lista
     add_task(1, 3, 4,3); // Tarea 1 con duración 3 y prioridad 2 y boat ID Paco
     add_task(2, 1, 2,2); // Tarea 2 con duración 1 y prioridad 3 y boat ID Pesquero
-    add_task(3, 4, 1,2); // Tarea 3 con duración 4 y prioridad 1 y boat ID Pesquero
     add_task(4, 2, 3,1); // Tarea 4 con duración 4 y prioridad 1 y boat ID Cargo
+    add_task(3, 4, 1,2); // Tarea 3 con duración 4 y prioridad 1 y boat ID Pesquero
     add_task(5, 4, 1,1); // Tarea 5 con duración 4 y prioridad 1 y boat ID Cargo
     //printf("Iniciando Round Robin Scheduler:\n");
     //round_robin_scheduler(); // Ejecutar Round Robin

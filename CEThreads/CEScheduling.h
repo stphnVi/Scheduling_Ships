@@ -123,7 +123,7 @@ void generate_json(char *buffer, size_t size, const char* scheduler_type)
 {
 
     task_t *temp = task_list;
-    snprintf(buffer, size,"{\"scheduler\": \"%s\", \"tasks\": [", scheduler_type);
+    snprintf(buffer, size,"{\"scheduler\": \"%s\",\"side\": \"1\", \"tasks\": [", scheduler_type);
 
     while (temp != NULL)
     {
