@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include "Canal/Control/Setup.h"
 #include "Canal/Structs/Canal.h"
+#include "Canal/Structs/BoatList.h"
+#include "Canal/Structs/NodeList.h"
+#include "Canal/Control/Control.h"
 #include <sys/time.h> // Para gettimeofday
 #include <time.h>     // Para time
 
@@ -300,6 +303,7 @@ int main()
     //int a = 0;
 
     struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
+    Equity(1,canal.right, canal.left, 2);
 
     // Agregar tareas a la lista
     //add_task(1, 3, 2, 1); // Tarea 1 con duración 3 y prioridad 2 de tipo 1
@@ -326,5 +330,6 @@ int main()
 void prueba(){
     
     struct Canal canal = setup(2, 'T', 3, 3, 3, 3);
-
+    Tica(canal.right, canal.left, 3);
+    
 }

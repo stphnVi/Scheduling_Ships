@@ -9,7 +9,8 @@
         "passage.h": "c",
         "unistd.h": "c",
         "nodelist.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "setup.h": "c"
     },
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/Structs",

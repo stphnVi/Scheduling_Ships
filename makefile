@@ -11,6 +11,7 @@ SRCS_SCHEDULER = A_Scheduling.c \
                  Canal/Control/Setup.c \
                  Canal/Control/ThreadsAdapter.c \
                  Canal/Control/Tica.c \
+                 Canal/Control/Time.c \
                  Canal/Structs/NodeList.c \
                  Canal/Structs/Boat.c \
                  Canal/Structs/BoatList.c \
